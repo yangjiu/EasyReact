@@ -77,7 +77,6 @@ Note: The "Node" listed below refer to `EZRNode`, a unified representation of va
 | Chinese document support   | ✅                                                                                                                         | ❌                      | ❌                                             |
 | Debugging tools            | [Topology display](./Documents/English/BasicOperators.md#simple-access) <br>More rich dynamic debugging tools(Coming soon) | Instrument             | ❌                                             |
 
-
 ## System Requirements
 
 - iOS 8.0 +
@@ -109,8 +108,9 @@ EasyReact contains a complete unit test with the relevant code in the Example/Te
 
 ### Environment
 
-Mac OS  10.12.6, CPU: 2.9GHz, Core i5
-Xcode 9, iOS11, iPhone 8 Plus simulator
+Build Platform: macOS High Sierra 10.13.5
+IDE: Xcode 9.4.1
+Device: iPhone X 256G iOS 11.4(15F79)
 
 ### Cases
 
@@ -125,17 +125,17 @@ The unit of time is ns.
 
 Repeat the above experiment 10 times to get the data as follows:
 
-| name          | listener | map       | filter   | flattenMap | combine   | zip       | merge    | syncWith  |
-| ------------- | -------- | --------- | -------- | ---------- | --------- | --------- | -------- | --------- |
-| EZRNode       | 4775053  | 57487844  | 13851412 | 11966681   | 18972713  | 134567221 | 36076535 | 18388601  |
-| ReactiveCocoa | 6273485  | 102644235 | 66771529 | 80881225   | 496207382 | 327464977 | 29010632 | 100022454 |
-| RAC:EZRNode   | 131.38%  | 178.55%   | 482.06%  | 675.89%    | 2615.37%  | 243.35%   | 80.41%   | 543.94%   |
+| name          | listener | map      | filter   | flattenMap | combine   | zip       | merge    | syncWith |
+| ------------- | -------- | -------- | -------- | ---------- | --------- | --------- | -------- | -------- |
+| EasyReact     | 1860665  | 30285707 | 7043007  | 7259761    | 6234540   | 63384482  | 19794457 | 12359669 |
+| ReactiveCocoa | 4054261  | 74416369 | 45095903 | 44675757   | 209096028 | 143311669 | 13898969 | 53619799 |
+| RAC:EasyReact | 217.89%  | 245.71%  | 640.29%  | 615.39%    | 3353.83%  | 226.10%   | 70.22%   | 433.83%  |
 
 ![benchmark](./images/benchmark.png)
 
 ### Summary
 
-ReactiveCocoa's average time consuming is 618.87% times more than EasyReact.
+ReactiveCocoa's average time consuming is 725.41% times more than EasyReact.
 
 EasyReact will compare benchmark with RxSwift when the Swift version open source recently.
 
