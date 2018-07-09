@@ -21,7 +21,7 @@
 @implementation EZRBenchmarkTarget
 
 - (NSString *)name {
-    return @"EZRNode";
+    return @"EasyReact";
 }
 
 - (void)listenerBenchmarkListenerCount:(NSUInteger)listenerCount changeTimes:(NSUInteger)times {

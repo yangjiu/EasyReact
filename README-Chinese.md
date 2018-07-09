@@ -108,8 +108,9 @@ EasyReact 包含了完善的单元测试，相关代码在 Example/Tests 文件�
 
 ### 测试环境
 
-Mac OS  10.12.6, CPU: 2.9GHz, Core i5
-Xcode 9, iOS11, iPhone 8 Plus simulator
+编译平台: macOS High Sierra 10.13.5
+IDE: Xcode 9.4.1
+真机设备: iPhone X 256G iOS 11.4(15F79)
 
 ### 测试对象
 
@@ -124,19 +125,19 @@ Xcode 9, iOS11, iPhone 8 Plus simulator
 
 重复上面的实验10次，得到数据平均值如下：
 
-| name          | listener | map       | filter   | flattenMap | combine   | zip       | merge    | syncWith  |
-| ------------- | -------- | --------- | -------- | ---------- | --------- | --------- | -------- | --------- |
-| EZRNode       | 4775053  | 57487844  | 13851412 | 11966681   | 18972713  | 134567221 | 36076535 | 18388601  |
-| ReactiveCocoa | 6273485  | 102644235 | 66771529 | 80881225   | 496207382 | 327464977 | 29010632 | 100022454 |
-| RAC:EZRNode   | 131.38%  | 178.55%   | 482.06%  | 675.89%    | 2615.37%  | 243.35%   | 80.41%   | 543.94%   |
+| name          | listener | map      | filter   | flattenMap | combine   | zip       | merge    | syncWith |
+| ------------- | -------- | -------- | -------- | ---------- | --------- | --------- | -------- | -------- |
+| EasyReact     | 1860665  | 30285707 | 7043007  | 7259761    | 6234540   | 63384482  | 19794457 | 12359669 |
+| ReactiveCocoa | 4054261  | 74416369 | 45095903 | 44675757   | 209096028 | 143311669 | 13898969 | 53619799 |
+| RAC:EasyReact | 217.89%  | 245.71%  | 640.29%  | 615.39%    | 3353.83%  | 226.10%   | 70.22%   | 433.83%  |
 
 ![benchmark](./images/benchmark.png)
 
 ### 结果总结
 
-基于Objective-C语言实现的EasyReact和ReactiveCocoa： 
+基于Objective-C语言实现的EasyReact和ReactiveCocoa：
 
-ReactiveCocoa 平均耗时是 EasyReact 的 618.87%
+ReactiveCocoa 平均耗时是 EasyReact 的 725.41%
 
 EasyReact 的 swift 版本即将开源，届时会和 RxSwift 进行 benchmark 的比较。
 
