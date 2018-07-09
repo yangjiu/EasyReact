@@ -109,7 +109,9 @@ EasyReact 包含了完善的单元测试，相关代码在 Example/Tests 文件�
 ### 测试环境
 
 编译平台: macOS High Sierra 10.13.5
+
 IDE: Xcode 9.4.1
+
 真机设备: iPhone X 256G iOS 11.4(15F79)
 
 ### 测试对象

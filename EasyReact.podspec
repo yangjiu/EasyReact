@@ -24,6 +24,6 @@ DESC
 
   s.private_header_files = ['EasyReact/Classes/Core/Private/**/*.h', 'EasyReact/Classes/Core/ListenEdges/**/*.h']
 
-  s.dependency 'EasyFoundation', '~> 1.0.0-alpha'
+  s.dependency 'EasyFoundation', '~> 1.0.0'
 
 end
