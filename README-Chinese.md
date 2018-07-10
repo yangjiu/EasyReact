@@ -60,7 +60,7 @@ EasyReact 是一个简单易用的响应式编程库。
 
 3. [内存管理](./Documents/Chinese/MemoryManagement.md)
 
-4. [如何贡献](./Documents/Chinese/CONTRIBUTING_Chinese.md)
+4. [如何贡献](./CONTRIBUTING_Chinese.md)
 
 ## 对比其他函数响应式库（例如 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) 或 [ReactiveX](https://github.com/ReactiveX))
 

@@ -60,7 +60,7 @@ Note: The "Node" listed below refer to `EZRNode`, a unified representation of va
 
 3. [Memory Management](./Documents/English/MemoryManagement.md)
 
-4. [How to Contribute](./Documents/English/CONTRIBUTING.md)
+4. [How to Contribute](./CONTRIBUTING.md)
 
 ## Compare other Functional Reactive libraries (e.g. [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) or [ReactiveX](https://github.com/ReactiveX))
 
