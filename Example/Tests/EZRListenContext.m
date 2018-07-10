@@ -14,7 +14,6 @@
  * limitations under the License.
  **/
 
-
 QuickSpecBegin(EZRListenContextSpec)
 
 describe(@"Listener", ^{
