@@ -33,7 +33,7 @@ To get started, you will need to open a Terminal and:
 
 4. Ensure all tests pass with your changes and test coverage must greater than before. If there is any new functionality introduced by your changes, new test case(s) may be required. If you need any help writing tests, contact us on [EasyReact Team](mailto:it_easyreact@meituan.com).
 
-5. Commit message should conform to [commit message templates](../common/commentformat.txt).
+5. Commit message should conform to [commit message templates](./Documents/common/commentformat.txt).
 
 6. If the tests all pass, open a Pull Request following the guidelines below.
 
@@ -57,7 +57,7 @@ If you have any questions, mail to [EasyReact Team](mailto:it_easyreact@meituan.
 
 ## Reporting Issues
 
-See the [issue template](../../.github/ISSUE_TEMPLATE/issue-template.md).
+See the [issue template](.github/ISSUE_TEMPLATE/issue-template.md).
 
 ---
 

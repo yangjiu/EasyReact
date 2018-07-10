@@ -36,7 +36,7 @@
 4. 创建新的 PR 前应该保证所有的测试用例是通过的，并且测试用例的覆盖度要大于之前的。如果你对项目添加了新的功能，相应的也需要补充对于的测试用例。
  如果你对书写测试用例有疑问， 可以通过邮件与开发人员联系[EasyReact Team](mailto:it_easyreact@meituan.com)。
 
-5. Git 想要的提交信息要遵守如下模板[commit message templates](../common/commentformat.txt)。
+5. Git 想要的提交信息要遵守如下模板[commit message templates](./Documents/common/commentformat.txt)。
 
 6. 如果以上步骤都满足，可以创建你的 PR 了。
 
@@ -58,7 +58,7 @@ EasyReact 使用 [持续集成](https://en.wikipedia.org/wiki/Continuous_integra
 
 ## 报告 Issues
 
-如果有 ISSUE 需要提出，请遵守此 [模板](../../.github/ISSUE_TEMPLATE/issue-template.md)。
+如果有 ISSUE 需要提出，请遵守此 [模板](.github/ISSUE_TEMPLATE/issue-template.md)。
 
 ---
 
