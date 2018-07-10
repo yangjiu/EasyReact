@@ -109,7 +109,9 @@ EasyReact contains a complete unit test with the relevant code in the Example/Te
 ### Environment
 
 Build Platform: macOS High Sierra 10.13.5
+
 IDE: Xcode 9.4.1
+
 Device: iPhone X 256G iOS 11.4(15F79)
 
 ### Cases
@@ -149,7 +151,6 @@ zesming, [ming9010@gmail.com](mailto:ming9010@gmail.com)
 Zhiyu Wong, [www312422@vip.qq.com](mailto:www312422@vip.qq.com)  
 johnnywjy, [johnny.wjy07@gmail.com](mailto:johnny.wjy07@gmail.com)  
 qiezishu, [qiezishu@yahoo.com](mailto:qiezishu@yahoo.com)  
-
 
 ## License
 

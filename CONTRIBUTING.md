@@ -7,11 +7,11 @@ We love contributions to the EasyReact project and request you follow the guidel
 <!-- TOC -->
 
 - [Contributing to EasyReact](#contributing-to-easyreact)
-    - [Getting Started](#getting-started)
-    - [Pull Requests](#pull-requests)
-    - [Asking Questions](#asking-questions)
-    - [Reporting Issues](#reporting-issues)
-        - [Additional Resources](#additional-resources)
+  - [Getting Started](#getting-started)
+  - [Pull Requests](#pull-requests)
+  - [Asking Questions](#asking-questions)
+  - [Reporting Issues](#reporting-issues)
+    - [Additional Resources](#additional-resources)
 
 <!-- /TOC -->
 

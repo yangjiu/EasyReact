@@ -9,11 +9,11 @@
 <!-- TOC -->
 
 - [为 EasyReact 贡献代码](#为-easyreact-贡献代码)
-    - [快速入手](#快速入手)
-    - [创建 Pull Requests](#创建-pull-requests)
-    - [提问](#提问)
-    - [报告 Issues](#报告-issues)
-        - [参考信息](#参考信息)
+  - [快速入手](#快速入手)
+  - [创建 Pull Requests](#创建-pull-requests)
+  - [提问](#提问)
+  - [报告 Issues](#报告-issues)
+    - [参考信息](#参考信息)
 
 <!-- /TOC -->
 
