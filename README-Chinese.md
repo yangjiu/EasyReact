@@ -157,3 +157,7 @@ qiezishu, [qiezishu@yahoo.com](mailto:qiezishu@yahoo.com)
 ## 许可证
 
 EasyReact 使用 [Apache Public License 2.0 许可证](./LICENSE)。
+
+## 其他
+
+想要一起共同发展 EasyReact 么？发送简历到 [邮件](mailto:it_easyreact@meituan.com) 加入我们！
