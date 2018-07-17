@@ -180,8 +180,32 @@ describe(@"NSObject with EZR_PATH extension", ^{
             [checkTool checkObj:EZR_PATH(obj2, property3)];
         };
         expectCheckTool(check).to(beReleasedCorrectly());
+        {
+            check = ^(CheckReleaseTool *checkTool) {
+                UIButton *button = [UIButton buttonWithType:(UIButtonTypeSystem)];
+                EZRMutableNode *modelNode = [EZRMutableNode new];
+                [EZR_PATH(button, titleLabel.text) linkTo:modelNode];
+                [checkTool checkObj:button];
+                [checkTool checkObj:modelNode];
+                [checkTool checkObj:EZR_PATH(button, titleLabel.text)];
+            };
+            expectCheckTool(check).to(beReleasedCorrectly());
+        }
+        {
+            check = ^(CheckReleaseTool *checkTool) {
+                UIButton *button = [UIButton buttonWithType:(UIButtonTypeSystem)];
+                [button addObserver:self forKeyPath:@"titleLabel.text" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+                EZRMutableNode *modelNode = [EZRMutableNode new];
+                [EZR_PATH(button, titleLabel.text) linkTo:modelNode];
+                [checkTool checkObj:button];
+                [checkTool checkObj:modelNode];
+                [checkTool checkObj:EZR_PATH(button, titleLabel.text)];
+                [button removeObserver:self forKeyPath:@"titleLabel.text"];
+            };
+            expectCheckTool(check).to(beReleasedCorrectly());
+        }
     });
-    
+
     it(@"should be released when no one is listening", ^{
         expectCheckTool(^(CheckReleaseTool *checkTool) {
             TestKVOClass *obj = TestKVOClass.new;

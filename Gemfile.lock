@@ -200,8 +200,8 @@ PLATFORMS
 
 DEPENDENCIES
   cocoapods (~> 1.5.3)
-  fastlane
-  git
+  fastlane (~> 2.99.0)
+  git (~> 1.4.0)
 
 BUNDLED WITH
    1.16.1
