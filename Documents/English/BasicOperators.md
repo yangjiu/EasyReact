@@ -631,12 +631,13 @@ EZRNode<NSNumber *> *nodeC = [nodeB map:^NSNumber *(NSNumber *next) {
   NSAssert([[NSThread currentThread] isMainThread], @"");
   return next;
 }];
-nodeA.value = @(999.0);
+[[nodeC listenedBy:self] withBlock:^(NSNumber * _Nullable next) {
+}];
+nodeA.value = @(9.0);
 // Wow, I have to wait for a while
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
   nodeA.value = @3; // Oh no, assert failure
 });
-[super viewDidLoad];
 ```
 
 At this point `deliverOn:` and `deliverOnMainQueue` come in handy:
@@ -652,9 +653,11 @@ EZRNode<NSNumber *> *nodeC = [[nodeB deliverOnMainQueue] map:^NSNumber *(NSNumbe
   NSAssert([[NSThread currentThread] isMainThread], @"");
   return next;
 }]
-nodeA.value = @(999.0);
+[[nodeC listenedBy:self] withBlock:^(NSNumber * _Nullable next) {
+}];
+nodeA.value = @(9.0);
 // Um, don't worry
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
   nodeA.value = @3; // Um, don't worry
 });
 ```

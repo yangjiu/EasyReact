@@ -62,7 +62,7 @@ static void *EZR_NodeContextKey = &EZR_NodeContextKey;
         @synchronized(self) {
             nodeContext = objc_getAssociatedObject(self, EZR_NodeContextKey);
             if (!nodeContext) {
-                nodeContext = [NSMutableDictionary dictionary];
+                nodeContext = [[NSMutableDictionary alloc] init];
                 objc_setAssociatedObject(self, EZR_NodeContextKey, nodeContext, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
         }

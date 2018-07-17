@@ -24,6 +24,7 @@
 #import "EZRBlockCancelable.h"
 #import "EZRListenEdge.h"
 #import "NSObject+EZR_Listen.h"
+#import "EZRMetaMacros.h"
 
 @implementation EZRListenContext {
     __weak EZRNode *_node;
@@ -35,7 +36,7 @@
     if (self = [super init]) {
         _node = node;
         _listener = listener;
-        _transforms = [NSMutableArray array];
+        _transforms = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -113,12 +114,16 @@
     listenEdge.from = strongNode;
     listenEdge.to = _listener;
     [_transforms addObject:listenEdge];
+    @ezr_weakify(self)
     return [[EZRBlockCancelable alloc] initWithBlock:^{
+        @ezr_strongify(self)
         listenEdge.from = nil;
         listenEdge.to = nil;
-        [self->_transforms removeObject:listenEdge];
-        if (self->_transforms.count == 0) {
-            [self->_listener stopListen:strongNode];
+        if(self) {
+            [self->_transforms removeObject:listenEdge];
+            if (self->_transforms.count == 0) {
+                [self->_listener stopListen:strongNode];
+            }
         }
     }];
 }

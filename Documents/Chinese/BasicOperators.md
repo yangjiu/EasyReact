@@ -469,7 +469,7 @@ nodeA.value = @3;
 
 ### filter
 
-`filter:`的作用是过滤每个上游的值，将符合条件的值传递给下游：
+`filter:`的作用是过滤每个上游的值，将符合条件的值传递给下游：
 
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode value:@1];
@@ -631,12 +631,13 @@ EZRNode<NSNumber *> *nodeC = [nodeB map:^NSNumber *(NSNumber *next) {
     NSAssert([[NSThread currentThread] isMainThread], @"");
     return next;
 }];
-nodeA.value = @(999.0);
+[[nodeC listenedBy:self] withBlock:^(NSNumber * _Nullable next) {
+}];
+nodeA.value = @(9.0);
 // 哇，又要等一会了
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     nodeA.value = @3; // 不好，要断言失败了
 });
-[super viewDidLoad];
 ```
 
 这时`deliverOn:`和`deliverOnMainQueue`就派上用场了：
@@ -652,9 +653,11 @@ EZRNode<NSNumber *> *nodeC = [[nodeB deliverOnMainQueue] map:^NSNumber *(NSNumbe
     NSAssert([[NSThread currentThread] isMainThread], @"");
     return next;
 }];
-nodeA.value = @(999.0);
+[[nodeC listenedBy:self] withBlock:^(NSNumber * _Nullable next) {
+}];
+nodeA.value = @(9.0);
 // 嗯，不担心
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     nodeA.value = @3; // 嗯，不担心
 });
 ```
