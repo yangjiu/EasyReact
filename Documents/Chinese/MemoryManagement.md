@@ -99,7 +99,7 @@ Node <-- BlockListenEdge <-- Listener
 //                    └---------------┘
 ```
 
-为此我们提供了 `@erz_weakify(...)` 和  `@erz_strongify(...)` 来解决循环引用的问题。
+为此我们提供了 `@ezr_weakify(...)` 和  `@ezr_weakify(...)` 来解决循环引用的问题。
 
 最佳实践如下：
 
