@@ -357,7 +357,7 @@ EZRNode<NSNumber *> *nodeD = [EZRNode new];
 
 ### 断开两个节点
 
-当两个节点不在相关的时候，你需要断开两个节点，如果你还有变换的实例，可以修改 from 或者 to 的属性来断开这两个节点或者改变连接：
+当两个节点不再相关的时候，你需要断开两个节点，如果你还有变换的实例，可以修改 from 或者 to 的属性来断开这两个节点或者改变连接：
 
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode value:@1];
@@ -674,7 +674,7 @@ EZRNode<NSNumber *> *nodeC = [nodeA delayOnMainQueue:2];
 
 ### scan
 
-扫描操作是个稍微复杂一点的操作，它需要传入一个初试值和一个两个入参的 block。当上游第一次有值传递过来的时候，会以初始值和上游当前值调用这个 block，block 的返回值就是下游的值并且这个值会被记下来。以后每次上游有值传递过来的时候，都会以上一次记下来的值和上游当前值调用这个 block，以此循环。例如：
+扫描操作是个稍微复杂一点的操作，它需要传入一个初始值和一个带有两个入参的 block。当上游第一次有值传递过来的时候，会以初始值和上游当前值调用这个 block，block 的返回值就是下游的值并且这个值会被记下来。以后每次上游有值传递过来的时候，都会以上一次记下来的值和上游当前值调用这个 block，以此循环。例如：
 
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode new];
