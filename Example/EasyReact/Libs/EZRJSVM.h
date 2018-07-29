@@ -14,23 +14,11 @@
  * limitations under the License.
  **/
 
-#import "ERViewController.h"
+#import <Foundation/Foundation.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
-@interface ERViewController ()
+@interface EZRJSVM : NSObject
 
-@end
-
-@implementation ERViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (JSValue *)eval:(NSString *)evalString params:(NSDictionary *)params;
 
 @end
