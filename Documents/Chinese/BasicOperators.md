@@ -227,14 +227,13 @@ NSObject *listener = [NSObject new];
 ```objective-c
 EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
 [NSThread currentThread].threadDictionary[@"flag"] = @"这是主线程";
-NSObject *listener = [NSObject new];
-[[node listenedBy:listener] withBlock:^(NSNumber *next) {
+[[node listenedBy:self] withBlock:^(NSNumber *next) {
   NSLog(@"%@：现在收到了 %@", [NSThread currentThread].threadDictionary[@"flag"], next);
 }];
 NSLog(@"node 已经进行监听了");
 node.value = @2;
 NSLog(@"node 值已经设置为 2 了");
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
   [NSThread currentThread].threadDictionary[@"flag"] = @"这是某个子线程";
   node.value = @3;
   NSLog(@"node 值已经设置为 3 了");
@@ -263,7 +262,7 @@ EZRMutableNode<NSString *> *node = [EZRMutableNode value:@"你好，世界"];
   self.someLabel.text = next;
 }];
 
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
   node.value = @"一个崩溃在等着你";
 });
 ```
@@ -287,12 +286,11 @@ node.value = @19999999;
 
 ```objective-c
 EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
-NSObject *listener = [NSObject new];
-[[node listenedBy:listener] withBlockOnMainQueue:^(NSNumber *next) {
+[[node listenedBy:self] withBlockOnMainQueue:^(NSNumber *next) {
   NSString *thread = [[NSThread currentThread] isMainThread] ? @"主线程" : @"子线程";
   NSLog(@"[监听1]%@：现在收到了 %@", thread, next);
 }];
-[[node listenedBy:listener] withBlock:^(NSNumber *next) {
+[[node listenedBy:self] withBlock:^(NSNumber *next) {
   NSString *thread = [[NSThread currentThread] isMainThread] ? @"主线程" : @"子线程";
   NSLog(@"[监听2]%@：现在收到了 %@", thread, next);
 } on:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
@@ -300,7 +298,7 @@ NSObject *listener = [NSObject new];
 NSLog(@"node 已经进行监听了");
 node.value = @2;
 NSLog(@"node 值已经设置为 2 了");
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
   [NSThread currentThread].threadDictionary[@"flag"] = @"这是某个子线程";
   node.value = @3;
   NSLog(@"node 值已经设置为 3 了");
