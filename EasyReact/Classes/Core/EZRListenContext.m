@@ -114,12 +114,12 @@
     listenEdge.from = strongNode;
     listenEdge.to = _listener;
     [_transforms addObject:listenEdge];
-    @ezr_weakify(self)
+    @ezr_weakify(self, listenEdge)
     return [[EZRBlockCancelable alloc] initWithBlock:^{
-        @ezr_strongify(self)
+        @ezr_strongify(self, listenEdge)
         listenEdge.from = nil;
         listenEdge.to = nil;
-        if(self) {
+        if(self && listenEdge) {
             [self->_transforms removeObject:listenEdge];
             if (self->_transforms.count == 0) {
                 [self->_listener stopListen:strongNode];
