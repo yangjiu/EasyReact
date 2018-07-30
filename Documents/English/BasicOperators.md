@@ -227,14 +227,13 @@ By default, the setting thread and listener thread are the same, for example:
 ```objective-c
 EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
 [NSThread currentThread].threadDictionary[@"flag"] = @"This is the main thread";
-NSObject *listener = [NSObject new];
-[[node listenedBy:listener] withBlock:^(NSNumber *next) {
+[[node listenedBy:self] withBlock:^(NSNumber *next) {
    NSLog(@"%@: now received %@", [NSThread currentThread].threadDictionary[@"flag"], next);
 }];
 NSLog (@"node has been listening");
 Node.value = @2;
 NSLog (@"node value has been set to 2");
-Dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+Dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
    [NSThread currentThread].threadDictionary[@"flag"] = @ "This is a child thread";
    Node.value = @3;
    NSLog (@"node value has been set to 3");
@@ -263,7 +262,7 @@ EZRMutableNode<NSString *> *node = [EZRMutableNode value:@"Hello, World"];
    self.someLabel.text = next;
 }];
 
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
    Node.value = @ "A crash is waiting for you";
 });
 ```
@@ -287,12 +286,11 @@ Use `withBlock:on:` or `withBlockOnMainQueue:` to help us solve this problem:
 
 ```objective-c
 EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
-NSObject *listener = [NSObject new];
-[[node listenedBy:listener] withBlockOnMainQueue:^(NSNumber *next) {
+[[node listenedBy:self] withBlockOnMainQueue:^(NSNumber *next) {
    NSString *thread = [[NSThread currentThread] isMainThread] ? @ "Main thread": @ "Child thread";
    NSLog(@"[listen1] %@: now received %@", thread, next);
 }];
-[[node listenedBy:listener] withBlock:^(NSNumber *next) {
+[[node listenedBy:self] withBlock:^(NSNumber *next) {
    NSString *thread = [[NSThread currentThread] isMainThread] ? @ "Main thread": @ "Child thread";
    NSLog(@"[listen2] %@: now received %@", thread, next);
 } on:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
@@ -300,7 +298,7 @@ NSObject *listener = [NSObject new];
 NSLog (@"node has been listening");
 node.value = @2;
 NSLog (@"node value already set to 2");
-dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
    [NSThread currentThread].threadDictionary[@"flag"] = @ "This is a child thread";
    Node.value = @3;
    NSLog (@"node value has been set to 3");
