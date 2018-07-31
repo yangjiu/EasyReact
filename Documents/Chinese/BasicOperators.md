@@ -220,6 +220,33 @@ NSObject *listener = [NSObject new];
 下一个值是 2，上下文是 嘿，是我
 ```
 
+有的时候，我们可能直接调用监听者的方法，像这样：
+
+```objective-c
+EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
+self.someView = [UIView new];
+@ezr_weakify(self)
+[[node listenedBy:self.someView] withBlock:^(NSNumber *_) {
+  @ezr_strongify(self)
+  [self.someView removeFromSuperview];
+}];
+```
+
+这样的代码不但重复，而且还需要 weakify-strongify。所以 EasyReact 专门为这种情况提供了 `withSelector:` 方法：
+
+```objective-c
+EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
+self.someView = [UIView new];
+
+[[node listenedBy:self.view] withSelector:@selector(removeFromSuperview)];
+```
+
+这样写起来就简单多了，`withSelector:` 的参数 `selector` 签名在不同参数个数时行为有所不同：
+
+- 没有参数时会直接调用该 selector 的函数。
+- 一个参数时会调用该 selector 的函数并将监听到的新值以第一参数的形式传入。
+- 两个参数时会调用该 selector 的函数并将监听到的新值以第一参数的形式传入，并将上下文对象以第二参数的形式传入。
+
 ### 多线程下的监听
 
 默认情况下，设置线程和监听线程是一致的，例如：

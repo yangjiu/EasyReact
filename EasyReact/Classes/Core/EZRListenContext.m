@@ -20,6 +20,7 @@
 #import "EZRCancelableBagProtocol.h"
 #import "EZRBlockListen.h"
 #import "EZRDeliveredListen.h"
+#import "EZRPerformSelectorListen.h"
 #import "EZRListen.h"
 #import "EZRBlockCancelable.h"
 #import "EZRListenEdge.h"
@@ -49,6 +50,11 @@
         }
     };
     return [self withSenderListAndContextBlock:contextBlock];
+}
+
+- (id<EZRCancelable>)withSelector:(SEL)selector {
+    NSParameterAssert(selector);
+    return [self withListenEdge:[[EZRPerformSelectorListen alloc] initWithSelector:selector]];
 }
 
 - (id<EZRCancelable>)withContextBlock:(void (^)(id _Nullable, id _Nullable))block {

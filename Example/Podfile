@@ -9,6 +9,7 @@ target 'EasyReact_Example' do
     pod 'Quick'
     pod 'Nimble'
     pod 'OCMockito'
+    pod 'OCMock'
   end
 end
 
