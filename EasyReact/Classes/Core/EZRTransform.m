@@ -41,6 +41,10 @@
     [self.nextReceiver next:value from:senderList context:context];
 }
 
+- (void)emptyFrom:(EZRSenderList *)senderList context:(id)context {
+    
+}
+
 - (EZRNode *)to {
     EZR_SCOPELOCK(_toLock);
     return _to;

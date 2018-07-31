@@ -20,12 +20,20 @@
 
 @required
 /**
- Transfers value object to downstream node by a given sender list and a context. The sender list contains all the nodes that had been transferred the value object. The given context is used for taking an external object.
+ Transfers value object to downstream by a given sender list and a context. The sender list contains all the nodes that had been transferred the value object. The given context is used for taking an external object.
  
  @param value       Latest value
  @param senderList  List of node value senders, used for retrospecting the sources of values
  @param context     Context passed by user
  */
 - (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context;
+
+/**
+ Notify upstream value to be empty to downstream by a given sender list and a context. The sender list contains all the nodes that had been transferred the value object. The given context is used for taking an external object.
+ 
+ @param senderList  List of node value senders, used for retrospecting the sources of values
+ @param context     Context passed by user
+ */
+- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context;
 
 @end
