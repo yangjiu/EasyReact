@@ -220,6 +220,33 @@ The next value is 1, the context is (null)
 The next value is 2, the context is Hey, it's me
 ```
 
+Sometimes, we may invoke listener method directly. Like this:
+
+```objective-c
+EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
+self.someView = [UIView new];
+@ezr_weakify(self)
+[[node listenedBy:self.someView] withBlock:^(NSNumber *_) {
+  @ezr_strongify(self)
+  [self.someView removeFromSuperview];
+}];
+```
+
+Those code not only aren't following DRY but also need weakify-strongify. So EasyReact provides `withSelector:` method:
+
+```objective-c
+EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
+self.someView = [UIView new];
+
+[[node listenedBy:self.view] withSelector:@selector(removeFromSuperview)];
+```
+
+Looks better! There have different behaviors when `withSelector:`'s parameter `selector`'s signature has different parameters count:
+
+- Invoke selector's method directly if no parameters.
+- Invoke selector's method with new value listened as first parameter if has only one parameter.
+- Invoke selector's method with new value listened as first parameter and context as second parameter if has two parameter.
+
 ### Listen Under Multithreading
 
 By default, the setting thread and listener thread are the same, for example:
