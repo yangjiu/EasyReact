@@ -29,11 +29,19 @@ id<NMBMatcher> beReleasedCorrectly() {
 }
 
 id<NMBMatcher> hasParameterAssert() {
-    return [NMBObjCMatcher hasParameterAssertMatcher];
+#ifdef DEBUG
+    return [NMBObjCMatcher hasParameterAssertMatcherDebug];
+#else
+    return [NMBObjCMatcher hasParameterAssertMatcherRelease];
+#endif
 }
 
 id<NMBMatcher> hasAssert() {
-    return [NMBObjCMatcher hasAssertMatcher];
+#ifdef DEBUG
+    return [NMBObjCMatcher hasAssertMatcherDebug];
+#else
+    return [NMBObjCMatcher hasAssertMatcherRelease];
+#endif
 }
 
 id<NMBMatcher> matchDotDSL(NSArray<EZRNode *> *nodes, NSArray<id<EZRTransformEdge>> *transforms) {

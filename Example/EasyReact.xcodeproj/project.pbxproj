@@ -11,6 +11,7 @@
 		222515D21F287F2C00291583 /* CustomMatchers.m in Sources */ = {isa = PBXBuildFile; fileRef = 229EA1A61ED9E05000B458B7 /* CustomMatchers.m */; };
 		222515DA1F289A7600291583 /* receive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222515D81F28997700291583 /* receive.swift */; };
 		2233CD831ECDC8B700C9E016 /* TestKVOClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 22461FAE1ECAE48F008C3ED3 /* TestKVOClass.m */; };
+		22964B592110314100AFC256 /* TestListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 22964B582110314100AFC256 /* TestListener.m */; };
 		22994F2120F499EB00587E34 /* EZRCancelableBagSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 22994F1F20F4990E00587E34 /* EZRCancelableBagSpec.m */; };
 		5A341A1FB3668AF88FC7EDFB /* Pods_EasyReact_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D172FCD4CCC447B2169939 /* Pods_EasyReact_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -79,6 +80,8 @@
 		22461FAD1ECAE48F008C3ED3 /* TestKVOClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKVOClass.h; sourceTree = "<group>"; };
 		22461FAE1ECAE48F008C3ED3 /* TestKVOClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKVOClass.m; sourceTree = "<group>"; };
 		22461FB01ECAE4EA008C3ED3 /* NSObject+ER_Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+ER_Extension.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		22964B572110314100AFC256 /* TestListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestListener.h; sourceTree = "<group>"; };
+		22964B582110314100AFC256 /* TestListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestListener.m; sourceTree = "<group>"; };
 		22994F1F20F4990E00587E34 /* EZRCancelableBagSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZRCancelableBagSpec.m; sourceTree = "<group>"; };
 		229EA1A51ED9E05000B458B7 /* CustomMatchers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMatchers.h; sourceTree = "<group>"; };
 		229EA1A61ED9E05000B458B7 /* CustomMatchers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMatchers.m; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				229EA1A11ED9DD3F00B458B7 /* Matchers */,
 				22461FAD1ECAE48F008C3ED3 /* TestKVOClass.h */,
 				22461FAE1ECAE48F008C3ED3 /* TestKVOClass.m */,
+				22964B572110314100AFC256 /* TestListener.h */,
+				22964B582110314100AFC256 /* TestListener.m */,
 			);
 			path = TestSupportClasses;
 			sourceTree = "<group>";
@@ -654,6 +659,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-EasyReact_Tests/Pods-EasyReact_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/OCHamcrest/OCHamcrest.framework",
+				"${BUILT_PRODUCTS_DIR}/OCMock/OCMock.framework",
 				"${BUILT_PRODUCTS_DIR}/OCMockito/OCMockito.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -661,6 +667,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCHamcrest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCMock.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCMockito.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -693,6 +700,7 @@
 				222515D21F287F2C00291583 /* CustomMatchers.m in Sources */,
 				CE9D85CF208060E300CCAEF3 /* EZRNode+Value.m in Sources */,
 				2224F33B1F27768000C59BCD /* SwiftSpec.swift in Sources */,
+				22964B592110314100AFC256 /* TestListener.m in Sources */,
 				22994F2120F499EB00587E34 /* EZRCancelableBagSpec.m in Sources */,
 				CE9D85CC207F5AA800CCAEF3 /* EZRNodeSpec.m in Sources */,
 				CE9D3923208722FF00D7780D /* EZRListenContextSpec.m in Sources */,

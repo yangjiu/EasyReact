@@ -37,6 +37,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+ Process in listening progress. Listener will call method after the change of value.
+ 
+ When the given selector hasn't parameter, the method be called ignore node's next value.
+ 
+ When the given selector has one parameter, the method be called with node's next value as parameter one.
+ 
+ When the given selector has two parameter, the method be called with node's next value as parameter one, and context as parameter two.
+ 
+ @param selector    Selector used to receive new value, signature see above
+ @return            Object whose listen action can be cancelled
+ */
+- (id<EZRCancelable>)withSelector:(SEL)selector;
+
+/**
  Process in listening progress. Block will be called after the change of value.
 
  @param block   Block used to receive new value, contains context besides new value

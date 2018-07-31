@@ -17,6 +17,87 @@
 QuickSpecBegin(EZRListenContextSpec)
 
 describe(@"Listener", ^{
+    context(@"- withSelector:", ^{
+        it(@"can invoke method which is given selector", ^{
+            EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
+            TestListener *listener = [TestListener new];
+            listener = OCMPartialMock(listener);
+            [[testNode listenedBy:listener] withSelector:@selector(testReceive)];
+            [[testNode listenedBy:listener] withSelector:@selector(testReceive:)];
+            [[testNode listenedBy:listener] withSelector:@selector(testReceive:context:)];
+            
+            [testNode setValue:@1 context:@"hello"];
+            
+            OCMVerify([listener testReceive]);
+            OCMVerify([listener testReceive:@1]);
+            OCMVerify([listener testReceive:@1 context:@"hello"]);
+        });
+        
+        it(@"should raise an assert if given selector parameters is not id type", ^{
+            EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
+            TestListener *listener = [TestListener new];
+            {
+                id<EZRCancelable> cancelable = [[testNode listenedBy:listener] withSelector:@selector(testReceiveInt:)];
+            
+                assertExpect(^{
+                    [testNode setValue:@1 context:@"hello"];
+                }).to(hasAssert());
+            
+                [cancelable cancel];
+            }
+            {
+                [testNode clean];
+                id<EZRCancelable> cancelable = [[testNode listenedBy:listener] withSelector:@selector(testReceiveInt:context:)];
+                
+                assertExpect(^{
+                    [testNode setValue:@1 context:@"hello"];
+                }).to(hasAssert());
+                
+                [cancelable cancel];
+            }
+            {
+                [testNode clean];
+                id<EZRCancelable> cancelable = [[testNode listenedBy:listener] withSelector:@selector(testReceive:intContext:)];
+                
+                assertExpect(^{
+                    [testNode setValue:@1 context:@"hello"];
+                }).to(hasAssert());
+                
+                [cancelable cancel];
+            }
+        });
+        
+        it(@"should raise an assert if given selector parameters is greater than 2", ^{
+            EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
+            TestListener *listener = [TestListener new];
+            [[testNode listenedBy:listener] withSelector:@selector(testReceive:context:other:)];
+                
+            assertExpect(^{
+                [testNode setValue:@1 context:@"hello"];
+            }).to(hasAssert());
+        });
+        
+        it(@"should raise an assert if given selector doesn't exists", ^{
+            EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
+            TestListener *listener = [TestListener new];
+            [[testNode listenedBy:listener] withSelector:@selector(addObject:)];
+            
+            assertExpect(^{
+                [testNode setValue:@1 context:@"hello"];
+            }).to(hasAssert());
+        });
+        
+        it(@"should raise an assert without given selector", ^{
+            EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
+            TestListener *listener = [TestListener new];
+            
+            SEL sel = NULL;
+            assertExpect(^{
+                [[testNode listenedBy:listener] withSelector:sel];
+            }).to(hasParameterAssert());
+        });
+    });
+    
     it(@"can receive value and context from sender", ^{
         EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
         NSObject *listener = [NSObject new];
@@ -65,7 +146,7 @@ describe(@"Listener", ^{
         expect(receiveContext).to(equal(@"2"));
     });
     
-    it(@"can receive on a given quque", ^{
+    it(@"can receive on a given queue", ^{
         EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
         NSObject *listener = [NSObject new];
         __block NSNumber *value;
