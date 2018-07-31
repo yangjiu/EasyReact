@@ -49,15 +49,17 @@ EZRNode\<T\> 类的实例是不可以主动触发变动的，如果想得到一�
 
 我们用 EZRNextReceiver 协议来表示接收者，它表示可以不断接收新值的对象。EZRNextReceiver 协议有个非常重要的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法，调用这个方法就可以向这个接收者发送新的值。
 
+另外，EZRNextReceiver 协议还有个`- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法，调用这个方法就可以向这个接收者通知一个空值。
+
 ## 变换
 
 EZREdge 协议有一个子协议 EZRTransformEdge，它表示数据流动中的变换，同时它也满足 EZRNextReceiver 协议。EZRTransformEdge 协议的 from 和 to 属性一定指向一个节点。
 
-每当来源节点执行`setValue:`或者`setValue:context:`的时候，只要值不是空值（`EZREmpty.empty`），就会调用所有的相连的下游边（from 指向该节点的边）的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。
+每当来源节点执行`setValue:`或者`setValue:context:`的时候，就会调用所有的相连的下游边（from 指向该节点的边）的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法或`- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。
 
-EZRTransform 是 EZRTransformEdge 协议的一个默认实现类，它帮助我们实现了 from 和 to 属性的 setter 和 getter，并且实现了 EZRNextReceiver 协议的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。它的变换规则是将每一个 from 节点通过`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法传过来的值和上下文对象都原封不动的传递给 to 节点。
+EZRTransform 是 EZRTransformEdge 协议的一个默认实现类，它帮助我们实现了 from 和 to 属性的 setter 和 getter，并且实现了 EZRNextReceiver 协议的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法和`- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。它的变换规则是将每一个 from 节点通过`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法传过来的值和上下文对象都原封不动的传递给 to 节点，并忽略`- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。
 
-想要定制自己的边只需要继承 EZRTransform 类并覆盖`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法就可以了。如果需要向 to 节点传递，请务必使用父类的`next:from:context`方法，将入参 value 改变为想要传递的值，同时保持入参 from 和 context 不变。详细的内容可以参考源代码中 EasyReact/Classes/Core/NodeTransforms 中实现的默认边。
+想要定制自己的边只需要继承 EZRTransform 类并覆盖`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法就可以了。如果需要向 to 节点传递，请务必使用父类的`next:from:context`方法，将入参 value 改变为想要传递的值，同时保持入参 from 和 context 不变。也可以覆盖`- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context`实现空值的传递逻辑。详细的内容可以参考源代码中 EasyReact/Classes/Core/NodeTransforms 中实现的默认边。
 
 ## 上游与下游
 
@@ -71,7 +73,7 @@ EZRTransform 是 EZRTransformEdge 协议的一个默认实现类，它帮助我�
 
 EZREdge 有另外一个子协议 EZRListenEdge，它表示数据流动中的监听行为，同时它也满足 EZRNextReceiver 协议。EZRListenEdge 协议的 from 属性一定指向一个节点，它的 to 属性指向一个 [监听者](#监听者)。
 
-EZRListen 是 EZRListenEdge 协议的一个默认实现类，它帮助我们实现了 from 和 to 属性的 setter 和 getter，并且实现了 EZRNextReceiver 协议的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。默认的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法并没有做什么，你可以子类化并且覆盖这个方法。
+EZRListen 是 EZRListenEdge 协议的一个默认实现类，它帮助我们实现了 from 和 to 属性的 setter 和 getter，并且实现了 EZRNextReceiver 协议的`- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法和`- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context`方法。默认的两个方法并没有做什么，你可以子类化并且覆盖这个方法。
 
 EZRBlockListen 和 EZRDeliveredListen 是 EZRListen 类的两个子类，可以方便的指定 block 和 GCD 的 queue 来完成监听，通常情况下可以满足我们的需要。
 
