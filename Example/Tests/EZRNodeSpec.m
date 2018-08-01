@@ -43,6 +43,15 @@ describe(@"EZRNode", ^{
         }).to(raiseException().named(EZRNodeExceptionName).reason(EZRExceptionReason_CannotModifyEZRNode));
     });
     
+    it(@"should raise exception when clean to a readonly EZRNode", ^{
+        EZRNode *testNode = [EZRNode new];
+        EZRMutableNode *mutableNode = (EZRMutableNode *)testNode;
+        
+        expectAction(^{
+            [mutableNode clean];
+        }).to(raiseException().named(EZRNodeExceptionName).reason(EZRExceptionReason_CannotModifyEZRNode));
+    });
+    
     it(@"can make itself to mutable", ^{
         EZRNode *testNode = [EZRNode new];
         EZRMutableNode *mutableNode = [testNode mutablify];

@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - EZRListenEdge dealloc delayed.
 
+### Changed
+
+- EZRNextReceiver protocol add new method named 'emptyFrom:context:'.
+
 ## 2.2.1 - 2018-07-17
 
 ### Fixed

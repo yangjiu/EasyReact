@@ -42,6 +42,10 @@
     
 }
 
+- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id)context {
+    
+}
+
 - (EZRNode *)to {
     EZR_SCOPELOCK(_toLock);
     return _to;

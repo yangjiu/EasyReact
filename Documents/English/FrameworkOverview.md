@@ -48,15 +48,17 @@ We use the EZREdge protocol to represent directed edges. Each `id<EZREdge>` has 
 
 We represent the receiver with the EZRNextReceiver protocol, which represents an object that can continuously receive new values. The EZRNextReceiver protocol has a very important `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method. Call this method to send new values to this receiver.
 
+In addition, the EZRNextReceiver protocol also has a `- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id) context` method, which can be used to notify the receiver of an empty value.
+
 ## Transform
 
 The EZREdge protocol has a sub-protocol called EZRTransformEdge, which represents the transformation in data flow and it also satisfies the EZRNextReceiver protocol. The from and to attributes of the EZRTransformEdge protocol must point to a node.
 
-Whenever the source node executes `setValue:` or `setValue:context:`, as long as the value is not null (`EZREmpty.empty`), all connected downstream edges are called (from points to the node's edge) `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method.
+Whenever the source node executes `setValue:` or `setValue:context:`, all connected downstream edges are called (from points to the node's edge) `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method or `- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id) context` method.
 
-EZRTransform is a default implementation of the EZRTransformEdge protocol that helps us implement setters and getters for the from and to attributes, and implements the EZRNextReceiver protocol `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method. Its transformation rule is to pass each value of the from-node to `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` methods and the context object is not pass to the to node.
+EZRTransform is a default implementation of the EZRTransformEdge protocol that helps us implement setters and getters for the from and to attributes, and implements the EZRNextReceiver protocol `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method and `- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id) context` method. Its transformation rule is to pass each value of the from-node to `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` methods and the context object is not pass to the to node, and ignore the `- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id) context` method.
 
-To customize your own edges just inherit the EZRTransform class and override the `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` methods. If you need to pass to the to node, be sure to use the parent's `next:from:context` method to change the input parameter value to the value you want to pass, while keeping the input parameters from and context unchanged. Detailed content can refer to the default edge implemented in EasyReact/Classes/Core/NodeTransforms in the source code.
+To customize your own edges just inherit the EZRTransform class and override the `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` methods. If you need to pass to the to node, be sure to use the parent's `next:from:context` method to change the input parameter value to the value you want to pass, while keeping the input parameters from and context unchanged. You can also override the `- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id) context` method to implement empty value's transfer. Detailed content can refer to the default edge implemented in EasyReact/Classes/Core/NodeTransforms in the source code.
 
 ## Upstream and Downstream
 
@@ -70,7 +72,7 @@ In addition, it is possible for one node and another node to have multiple edges
 
 EZREdge has another sub-protocol, EZRListenEdge, which represents the listening activity in the data flow and it also satisfies the EZRNextReceiver protocol. The from attribute of the EZRListenEdge protocol must point to a node whose to attribute points to a [listener](#Listener).
 
-EZRListen is a default implementation of the EZRListenEdge protocol that helps us implement setters and getters for the from and to attributes and implements the EZRNextReceiver protocol `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method. The default `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` methods does nothing, you can subclass and override this method.
+EZRListen is a default implementation of the EZRListenEdge protocol that helps us implement setters and getters for the from and to attributes and implements the EZRNextReceiver protocol `- (void)next:(nullable id)value from:(nonnull EZRSenderList *)senderList context:(nullable id)context` method and `- (void)emptyFrom:(nonnull EZRSenderList *)senderList context:(nullable id) context` method. The default those two methods do nothing, you can subclass and override this method.
 
 EZRBlockListen and EZRDeliveredListen are two subclasses of the EZRListen class that can easily specify the block and GCD queues to complete the listener, usually to meet our needs.
 

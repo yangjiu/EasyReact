@@ -114,7 +114,10 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
 }
 
 - (void)clean {
-    self.value = [EZREmpty empty];
+    if EZR_LikelyNO(!self.isMutable) {
+        EZR_THROW(EZRNodeExceptionName, EZRExceptionReason_CannotModifyEZRNode, nil);
+    }
+    [self emptyFrom:[EZRSenderList new] context:nil];
 }
 
 #pragma mark value's setter and getter
@@ -124,23 +127,31 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
         EZR_SCOPELOCK(_valueLock);
         _value = value;
     }
-    
-    if EZR_LikelyNO(value == EZREmpty.empty) {
-        return;
-    }
 
     EZRSenderList *newQueue = [senderList appendNewSender:self];
     
     for (EZSWeakReference<id<EZRListenEdge>> *item in self.privateListenEdges) {
-        [item.reference next:value from:newQueue context:context];
+        if EZR_LikelyNO(value == EZREmpty.empty) {
+            [item.reference emptyFrom:newQueue context:context];
+        } else {
+            [item.reference next:value from:newQueue context:context];
+        }
     }
     
     for (EZSWeakReference<id<EZRTransformEdge>> *reference in self.privateDownstreamTransforms) {
         id<EZRTransformEdge> item = reference.reference;
         if EZR_LikelyYES(![senderList contains:item.to]) {
-            [item next:value from:newQueue context:context];
+            if EZR_LikelyNO(value == EZREmpty.empty) {
+                [item emptyFrom:newQueue context:context];
+            } else {
+                [item next:value from:newQueue context:context];
+            }
         }
     }
+}
+
+- (void)emptyFrom:(EZRSenderList *)senderList context:(id)context {
+    [self next:EZREmpty.empty from:senderList context:context];
 }
 
 - (id)value {
