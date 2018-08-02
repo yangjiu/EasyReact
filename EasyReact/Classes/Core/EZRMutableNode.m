@@ -28,6 +28,7 @@
 #import "EZRTransform.h"
 #import "EZRNextReceiver.h"
 #import <objc/runtime.h>
+#import <EasyFoundation/EasyFoundation.h>
 
 NSString *EZRExceptionReason_CannotModifyEZRNode = @"EZRExceptionReason_CannotModifyEZRNode";
 
@@ -38,11 +39,52 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
     };
 }
 
+@interface EZRSettingQueue: NSObject
+
+@property (nonatomic, assign) BOOL firstSetting;
+@property (nonatomic, strong) NSMutableArray<EZTuple3<id, EZRSenderList *, id> *> *queue;
+
+- (void)enqueue:(EZTuple3<id, EZRSenderList *, id> *)tuple;
+- (EZTuple3<id, EZRSenderList *, id> *)dequeue;
+
+@end
+
+@implementation EZRSettingQueue
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _firstSetting = YES;
+    }
+    return self;
+}
+
+- (NSMutableArray *)queue {
+    if (!_queue) {
+        _queue = [NSMutableArray arrayWithCapacity:16];
+    }
+    return _queue;
+}
+
+- (void)enqueue:(EZTuple3<id,EZRSenderList *,id> *)tuple {
+    [self.queue addObject:tuple];
+}
+
+- (EZTuple3<id,EZRSenderList *,id> *)dequeue {
+    EZTuple3<id,EZRSenderList *,id> *first = self.queue.firstObject;
+    [self.queue removeObjectAtIndex:0];
+    return first;
+}
+
+@end
+
+
 @interface EZRMutableNode () <EZRNextReceiver>
 
 @end
 
-@implementation EZRMutableNode
+@implementation EZRMutableNode {
+    NSString *_settingQueueKey;
+}
 
 @synthesize value = _value, name = _name, mutable = _mutable;
 
@@ -77,6 +119,7 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
         EZR_LOCK_INIT(_upstreamLock);
         EZR_LOCK_INIT(_downstreamLock);
         EZR_LOCK_INIT(_listenEdgeLock);
+        _settingQueueKey = [NSString stringWithFormat:@"EZR_%p_settingQueueKey", (__bridge void *)self];
     }
     return self;
 }
@@ -122,7 +165,39 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
 
 #pragma mark value's setter and getter
 
+- (EZRSettingQueue *)currentSettingQueue {
+    EZRSettingQueue *settingQueue = [NSThread currentThread].threadDictionary[_settingQueueKey];
+    if (settingQueue == nil) {
+        settingQueue = [EZRSettingQueue new];
+        [NSThread currentThread].threadDictionary[_settingQueueKey] = settingQueue;
+    }
+    return settingQueue;
+}
+
+- (void)checkSettingQueue {
+    EZRSettingQueue *settingQueue = self.currentSettingQueue;
+    if (settingQueue.queue.count) {
+        [self settingDequeue];
+    } else {
+        [NSThread currentThread].threadDictionary[_settingQueueKey] = nil;
+    }
+}
+
+- (void)settingDequeue {
+    EZTuple3<id, EZRSenderList *, id> *tuple = [self.currentSettingQueue dequeue];
+    [self _next:tuple.first from:tuple.second context:tuple.third];
+}
+
 - (void)next:(nullable id)value from:(EZRSenderList *)senderList context:(nullable id)context {
+    EZRSettingQueue *settingQueue = self.currentSettingQueue;
+    if EZR_LikelyYES(settingQueue.firstSetting) {
+        settingQueue.firstSetting = NO;
+        [self _next:value from:senderList context:context];
+    } else {
+        [settingQueue enqueue:EZTuple(value, senderList, context)];
+    }
+}
+- (void)_next:(nullable id)value from:(EZRSenderList *)senderList context:(nullable id)context {
     {
         EZR_SCOPELOCK(_valueLock);
         _value = value;
@@ -148,6 +223,7 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
             }
         }
     }
+    [self checkSettingQueue];
 }
 
 - (void)emptyFrom:(EZRSenderList *)senderList context:(id)context {

@@ -128,6 +128,36 @@ describe(@"Listener", ^{
         
         expect(testNode).to(receive(@[@2, @3]));
     });
+    
+    it(@"can set value again within listen block", ^{
+        waitUntilTimeout(0.1, ^(void (^done)(void)) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                EZRMutableNode<NSNumber *> *testNode = [EZRMutableNode new];
+                __block int setTimes = 0;
+                NSObject *listener = [NSObject new];
+                @ezr_weakify(testNode)
+                [[testNode listenedBy:listener] withBlock:^(NSNumber * _Nullable next) {
+                    if (setTimes < 1) {
+                        ++setTimes;
+                        @ezr_strongify(testNode)
+                        testNode.value = @2;
+                    }
+                }];
+                __block int receiveTimes = 0;
+                [[testNode listenedBy:listener] withBlock:^(NSNumber * _Nullable next) {
+                    if (receiveTimes == 0) {
+                        ++receiveTimes;
+                        expect(next).to(equal(@1));
+                    } else {
+                        expect(next).to(equal(@2));
+                    }
+                }];
+                testNode.value = @1;
+                expect(testNode.value).to(equal(@2));
+                done();
+            });
+        });
+    });
 });
 
 QuickSpecEnd
