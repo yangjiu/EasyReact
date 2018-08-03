@@ -83,7 +83,7 @@ Node ==BlockListenEdge==> Listener
 Node <-- BlockListenEdge <-- Listener
 ```
 
-因此一旦 Listener 被销毁，其他对象会自动释放（是否销毁取决于是否还有其他对象对其强引用）。
+因此一旦 Listener 被销毁，其他对象会自动释放（是否销毁取决于是否还有其他对象对其强引用）。
 
 ## 关于 self
 
@@ -99,7 +99,7 @@ Node <-- BlockListenEdge <-- Listener
 //                    └---------------┘
 ```
 
-为此我们提供了 `@ezr_weakify(...)` 和  `@ezr_weakify(...)` 来解决循环引用的问题。
+为此我们提供了 `@ezr_weakify(...)` 和  `@ezr_strongify(...)` 来解决循环引用的问题。
 
 最佳实践如下：
 

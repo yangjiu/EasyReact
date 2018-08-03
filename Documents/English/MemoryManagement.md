@@ -99,7 +99,7 @@ It should be noted that usually we will use self in the method of listening. As 
 //                    └---------------┘
 ```
 
-For this purpose we provide `@ezr_weakify(...)` and `@ezr_weakify(...)` to solve the problem of retain cycle.
+For this purpose we provide `@ezr_weakify(...)` and `@ezr_strongify(...)` to solve the problem of retain cycle.
 
 The best practices are as follows:
 
