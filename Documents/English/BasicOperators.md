@@ -893,7 +893,7 @@ EZRMutableNode<NSString *> *node = [EZRMutableNode new];
 EZRNode<EZRSwitchedNodeTuple<id> *> *nodes = [node switchMap:^EZTuple2<id<NSCopying>,id> * _Nonnull(NSString * _Nullable next) {
   NSArray<NSString *> *components = [next componentsSeparatedByString:@"："];
   if (components.count > 1) {
-    NSString *actorLines = [next substringFromIndex:components.firstObject.length + 1];
+    NSString *actorLines = [next substringFromIndex:components.firstObject.length + 1];
     return EZTuple(components.firstObject, actorLines);
   } else {
     return EZTuple(nil, next);
