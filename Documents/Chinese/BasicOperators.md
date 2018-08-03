@@ -413,7 +413,7 @@ EZRNode<NSNumber *> *nodeB = [EZRNode new];
 
 ### 隐式的连接两个节点
 
-很多时候先创建节点再创建变换最后连接下游是我们默认的行为，为了更好的编码，我们提供了衍生变换的方式：
+很多时候先创建节点再创建变换最后连接下游是我们默认的行为，为了更好的编码，我们提供了衍生变换的方式：
 
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode value:@1];
@@ -795,7 +795,7 @@ nodeC.value;                                                  // <- 4
 
 ### zip
 
-拉链操作是这样的一种操作：它将多个节点作为上游，所有的节点的第一个值放在一个元组里，所有的节点的第二个值放在一个元组里……以此类推，以这些元组作为值的就是下游。它就好像拉链一样一个扣着一个：
+拉链操作是这样的一种操作：它将多个节点作为上游，所有的节点的第一个值放在一个元组里，所有的节点的第二个值放在一个元组里……以此类推，以这些元组作为值的就是下游。它就好像拉链一样一个扣着一个：
 
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode value:@1];
@@ -893,7 +893,7 @@ EZRMutableNode<NSString *> *node = [EZRMutableNode new];
 EZRNode<EZRSwitchedNodeTuple<id> *> *nodes = [node switchMap:^EZTuple2<id<NSCopying>,id> * _Nonnull(NSString * _Nullable next) {
   NSArray<NSString *> *components = [next componentsSeparatedByString:@"："];
   if (components.count > 1) {
-    NSString *actorLines = [next substringFromIndex:components.firstObject.length + 1];
+    NSString *actorLines = [next substringFromIndex:components.firstObject.length + 1];
     return EZTuple(components.firstObject, actorLines);
   } else {
     return EZTuple(nil, next);
@@ -1020,7 +1020,7 @@ nodeA.value;                                                // <- @2
 
 ### 手动同步
 
-有的时候我们可能还需要多个对象同步，例如 3 个对象想要同步，使用`syncWith`两次是可以的，但是会创建 4 条变换：
+有的时候我们可能还需要多个对象同步，例如 3 个对象想要同步，使用`syncWith`两次是可以的，但是会创建 4 条变换：
 
 ```plaintext
                 nodeA
@@ -1066,7 +1066,7 @@ nodeB.value;                                                // <- @3
 
 ## 高阶变换
 
-高阶总是给人一种十分复杂的感觉，然而在实际的使用中掌握它是有很大好处的。高阶数组是指代数组中每个元素也是数组的数组，所以高阶节点就是指代节点的值也是节点的节点。`EZRNode<EZRNode *>`就是一个这样的节点。下面会介绍高阶变换形式。
+高阶总是给人一种十分复杂的感觉，然而在实际的使用中掌握它是有很大好处的。高阶数组是指代数组中每个元素也是数组的数组，所以高阶节点就是指代节点的值也是节点的节点。`EZRNode<EZRNode *>`就是一个这样的节点。下面会介绍高阶变换形式。
 
 ### flatten
 
