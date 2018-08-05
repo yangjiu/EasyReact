@@ -60,8 +60,8 @@
                 _switchDictionary[key] = valueNode;
             }
         }
-        [valueNode setValue:mappedValue context:context];
         [super next:EZTuple(key, valueNode) from:senderList context:context];
+        [valueNode setValue:mappedValue context:context];
     }
 }
 
