@@ -153,6 +153,11 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
     if EZR_LikelyNO(!self.isMutable) {
         EZR_THROW(EZRNodeExceptionName, EZRExceptionReason_CannotModifyEZRNode, nil);
     }
+#ifdef DEBUG
+    if EZR_LikelyNO(!(self.hasListener || self.hasDownstreamNode)) {
+        NSLog(@"[EasyReact Warning] The node has no listeners .The value is: %@",value);
+    }
+#endif
     [self next:value from:[EZRSenderList new] context:context];
 }
 

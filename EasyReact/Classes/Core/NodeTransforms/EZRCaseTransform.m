@@ -64,13 +64,8 @@ static BOOL EZR_instanceEqual(id left, id right) {
         @ezr_weakify(self)
         self.cancelable = [[next.second listenedBy:self] withSenderListAndContextBlock:^(id  _Nullable value, EZRSenderList * _Nonnull insideSenderList, id  _Nullable insideContext) {
            @ezr_strongify(self)
-            if (self.cancelable) {
-                [self _superNext:value from:insideSenderList context:insideContext];
-            }
+            [self _superNext:value from:insideSenderList context:insideContext];
         }];
-        if (!next.second.isEmpty) {
-            [super next:next.second.value from:[senderList appendNewSender:next.second] context:context];
-        }
     }
 }
 

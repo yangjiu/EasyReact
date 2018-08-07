@@ -1473,6 +1473,16 @@ describe(@"EZRNode", ^{
         });
     });
     
+    it(@"can use case with out switch", ^{
+        EZRMutableNode<EZTupleBase *> *node = [EZRMutableNode new];
+        EZRNode *caseA = [node case:@"zh"];
+        [caseA startListenForTestWithObj:self];
+        EZRMutableNode<NSString *> *vNode =  [EZRMutableNode new];
+        node.value = EZTuple(@"zh", vNode);
+        vNode.value = @"23333";
+        expect(caseA).to(receive(@[@"23333"]));
+    });
+    
     it(@"can use switch case split value sequence", ^{
         EZRMutableNode<NSString *> *node = [EZRMutableNode value:@"Lilei: hello!"];
         EZRNode<EZRSwitchedNodeTuple<NSString *> *> *nodes = [node switch:^id<NSCopying> _Nonnull(NSString * _Nullable next) {
