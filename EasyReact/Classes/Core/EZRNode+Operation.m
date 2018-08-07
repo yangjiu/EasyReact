@@ -164,23 +164,23 @@ NSString * const EZRExceptionReason_CasedNodeMustGenerateBySwitchOrSwitchMapOper
     return [self delay:timeInterval queue:dispatch_get_main_queue()];
 }
 
-- (id<EZRCancelable>)syncWith:(EZRNode *)othEZRNode transform:(id  _Nonnull (^)(id _Nonnull))transform revert:(id  _Nonnull (^)(id _Nonnull))revert {
+- (id<EZRCancelable>)syncWith:(EZRNode *)otherNode transform:(id  _Nonnull (^)(id _Nonnull))transform revert:(id  _Nonnull (^)(id _Nonnull))revert {
     NSParameterAssert(transform);
     NSParameterAssert(revert);
     EZRMapTransform *mapTransform = [[EZRMapTransform alloc] initWithMapBlock:transform];
     EZRMapTransform *mapRevert = [[EZRMapTransform alloc] initWithMapBlock:revert];
     
-    id<EZRCancelable> transformCancelable = [self linkTo:othEZRNode transform:mapTransform];
-    id<EZRCancelable> revertCancelable = [othEZRNode linkTo:self transform:mapRevert];
+    id<EZRCancelable> transformCancelable = [otherNode linkTo:self transform:mapTransform];
+    id<EZRCancelable> revertCancelable = [self linkTo:otherNode transform:mapRevert];
     return [[EZRBlockCancelable alloc] initWithBlock:^{
         [transformCancelable cancel];
         [revertCancelable cancel];
     }];
 }
 
-- (id<EZRCancelable>)syncWith:(EZRNode *)othEZRNode {
+- (id<EZRCancelable>)syncWith:(EZRNode *)otherNode {
     id (^idFunction)(id) = ^(id source) { return source; };
-    return [self syncWith:othEZRNode transform:idFunction revert:idFunction];
+    return [self syncWith:otherNode transform:idFunction revert:idFunction];
 }
 
 - (EZRNode *)scanWithStart:(id)startingValue reduce:(EZRReduceBlock)reduceBlock {

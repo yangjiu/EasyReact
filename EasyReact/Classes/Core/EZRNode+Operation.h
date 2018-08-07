@@ -126,23 +126,23 @@ FOUNDATION_EXTERN NSString * const EZRExceptionReason_CasedNodeMustGenerateBySwi
  Synchronizes the current value with another value.
  The other EZRNode's value will be set to the current EZRNode's value even if the current value is empty.
 
- @note Both current EZRNode and othEZRNode must response to -(void)setValue: method, otherwise you will receive an exception while syncing.
+ @note Both current EZRNode and otherNode must response to -(void)setValue: method, otherwise you will receive an exception while syncing.
  
- @param othEZRNode  The other EZRNode you want to sync.
+ @param otherNode  The other EZRNode you want to sync.
  @return            A cancelable object which is able to stop syncing.
  */
-- (id<EZRCancelable>)syncWith:(EZRNode<T> *)othEZRNode;
+- (id<EZRCancelable>)syncWith:(EZRNode<T> *)otherNode;
 
 /**
  Sync the current value to another value.
  The other EZRNode's value will be set to the current EZRNode's value even if the current value is empty.
 
- @param othEZRNode  The other EZRNode you want to sync.
+ @param otherNode  The other EZRNode you want to sync.
  @param transform   Current nodes's value will use transform to other node.
  @param revert      The other node's value will use revert to current node.
  @return            A cancelable object which is able to stop syncing.
  */
-- (id<EZRCancelable>)syncWith:(EZRNode *)othEZRNode transform:(id (^)(T source))transform revert:(T (^)(id target))revert;
+- (id<EZRCancelable>)syncWith:(EZRNode *)otherNode transform:(id (^)(T source))transform revert:(T (^)(id target))revert;
 
 /**
  The operation used to reduce order after mapping node. FlattenMap operation will return a new node as the receiver's downstream. The value of the receiver will transfer to a node after block execution, and then be reduced order.
