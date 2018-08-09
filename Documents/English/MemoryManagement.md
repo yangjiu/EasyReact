@@ -161,14 +161,22 @@ transformAtoB.from = nil;
 Normally we will synchronize two nodes instead of more nodes. We provide `- (id<EZRCancelable>)syncWith:(EZRNode<T> *)otherNode` and `- (id<EZRCancelable>)syncWith:(EZRNode *)otherNode transform:(id(^)(T source))transform revert:(T(^)(id target))revert` these two convenient methods, they all provide `id<EZRCancelable>` this Objects, through the object's `- (void)cancel` method, we can quickly break the ring of these two nodes, an example is as follows:
 
 ```objective-c
-EZRNode<NSNumber *> *nodeA = [EZRNode new];
-EZRNode<NSString *> *nodeB = [EZRNode new];
-id<EZRCancelable> *cancelable = [nodeA syncWith:nodeB transform:^NSString *(NSNumber *source) {
+EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode new];
+EZRMutableNode<NSString *> *nodeB = [EZRMutableNode new];
+id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^id _Nonnull(NSNumber * _Nonnull source) {
     return source.stringValue;
-} revert:^NSNumber *(NSString *target) {
-    return @(source.integerValue);
+} revert:^NSNumber * _Nonnull(id  _Nonnull target) {
+    return @([target integerValue]);
 }];
-
-// If need to remove it
+NSObject *obj = [NSObject new];
+[[obj listen:nodeA] withBlock:^(id  _Nullable next) {
+    NSLog(@"nodeA value = %@", next);
+}];
+[[obj listen:nodeB] withBlock:^(id  _Nullable next) {
+     NSLog(@"nodeB value = %@", next);
+}];
+nodeA.value = @1;
+nodeB.value = @"11";
+// If need to cancel sync
 [cancelable cancel];
 ```

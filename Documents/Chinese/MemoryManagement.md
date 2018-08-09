@@ -161,14 +161,22 @@ transformAtoB.from = nil;
 通常情况下我们会对两个节点进行同步而不是更多节点，我们提供了`- (id<EZRCancelable>)syncWith:(EZRNode<T> *)otherNode`和`- (id<EZRCancelable>)syncWith:(EZRNode *)otherNode transform:(id (^)(T source))transform revert:(T (^)(id target))revert`这两个便捷的方法，它们都提供了`id<EZRCancelable>`这个对象，通过该对象的`- (void)cancel`方法，我们就可以快速的破除这两个节点的环了，示例如下：
 
 ```objective-c
-EZRNode<NSNumber *> *nodeA = [EZRNode new];
-EZRNode<NSString *> *nodeB = [EZRNode new];
-id<EZRCancelable> *cancelable = [nodeA syncWith:nodeB transform:^NSString *(NSNumber *source) {
+EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode new];
+EZRMutableNode<NSString *> *nodeB = [EZRMutableNode new];
+id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^id _Nonnull(NSNumber * _Nonnull source) {
     return source.stringValue;
-} revert:^NSNumber *(NSString *target) {
-    return @(source.integerValue);
+} revert:^NSNumber * _Nonnull(id  _Nonnull target) {
+    return @([target integerValue]);
 }];
-
-// 当需要破除时
+NSObject *obj = [NSObject new];
+[[obj listen:nodeA] withBlock:^(id  _Nullable next) {
+    NSLog(@"nodeA value = %@", next);
+}];
+[[obj listen:nodeB] withBlock:^(id  _Nullable next) {
+     NSLog(@"nodeB value = %@", next);
+}];
+nodeA.value = @1;
+nodeB.value = @"11";
+// 不在需要同步时，一定要取消同步
 [cancelable cancel];
 ```
