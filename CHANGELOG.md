@@ -10,11 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - EZRPerformSelectorListen edge. [ISSUE 28](https://github.com/meituan/EasyReact/issues/28)
+- Print warning message when set values to node which no downstreams.
 
 ### Fixed
 
 - EZRListenEdge dealloc delayed.
 - Set value within transferring raise other receiving order uncertain.
+- syncWith: sync direct is opposite. [ISSUE 33](https://github.com/meituan/EasyReact/issues/33)
 
 ### Changed
 
