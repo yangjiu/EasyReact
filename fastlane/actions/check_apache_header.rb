@@ -17,7 +17,11 @@ module Fastlane
         if source_file_diffs.size > 0
           file_header = File.read './Documents/common/Copyright.txt'
           error_file_diffs = source_file_diffs.reject do |diff|
-            repo.gblob(diff.src).contents.start_with? file_header
+            if diff.src.length > 0
+              repo.gblob(diff.src).contents.start_with? file_header
+            else
+              true
+            end
           end
           if error_file_diffs.size > 0
             error_file_names = error_file_diffs.map(&:path).join "\n"

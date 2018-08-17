@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220634C52126B83A009EFE0A /* EZRSenderListSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 220634C42126B83A009EFE0A /* EZRSenderListSpec.m */; };
 		2224F33B1F27768000C59BCD /* SwiftSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224F3391F27766C00C59BCD /* SwiftSpec.swift */; };
 		222515D21F287F2C00291583 /* CustomMatchers.m in Sources */ = {isa = PBXBuildFile; fileRef = 229EA1A61ED9E05000B458B7 /* CustomMatchers.m */; };
 		222515DA1F289A7600291583 /* receive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222515D81F28997700291583 /* receive.swift */; };
@@ -43,8 +44,8 @@
 		CE9D3923208722FF00D7780D /* EZRListenContextSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D3922208722FF00D7780D /* EZRListenContextSpec.m */; };
 		CE9D85CC207F5AA800CCAEF3 /* EZRNodeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* EZRNodeSpec.m */; };
 		CE9D85CD20804E0D00CCAEF3 /* EZRMutableNodeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3A0500207254AA00682095 /* EZRMutableNodeSpec.m */; };
-		CE9D85CE2080574C00CCAEF3 /* EZRNode+Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F3F91EC7933700897FAC /* EZRNode+Operation.m */; };
-		CE9D85CF208060E300CCAEF3 /* EZRNode+Value.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9A1F207B132F00557A94 /* EZRNode+Value.m */; };
+		CE9D85CE2080574C00CCAEF3 /* EZRNode+OperationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F3F91EC7933700897FAC /* EZRNode+OperationSpec.m */; };
+		CE9D85CF208060E300CCAEF3 /* EZRNode+ValueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9A1F207B132F00557A94 /* EZRNode+ValueSpec.m */; };
 		CEB23C3F1F6B7DBE009C29FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB23C3E1F6B7DBE009C29FB /* AppDelegate.m */; };
 		CEB23C421F6B7DBE009C29FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB23C411F6B7DBE009C29FB /* ViewController.m */; };
 		CEB23C451F6B7DBE009C29FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB23C431F6B7DBE009C29FB /* Main.storyboard */; };
@@ -55,8 +56,8 @@
 		CEC8C2361F7A2CA9009C3BE6 /* matchGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8C2351F7A2CA9009C3BE6 /* matchGraph.swift */; };
 		CECB7A1A1F39A82E005A6E47 /* AssertionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A191F39A82E005A6E47 /* AssertionHandler.m */; };
 		CECB7A1E1F39B72A005A6E47 /* hasAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A1D1F39B72A005A6E47 /* hasAssert.swift */; };
-		DD80D45F208051E7007D2754 /* NSObject+ER_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22461FB01ECAE4EA008C3ED3 /* NSObject+ER_Extension.m */; };
-		DD80D46020805CED007D2754 /* EZRNode+Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9497FC1F74B6190092D6F4 /* EZRNode+Graph.m */; };
+		DD80D45F208051E7007D2754 /* NSObject+ER_ExtensionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 22461FB01ECAE4EA008C3ED3 /* NSObject+ER_ExtensionSpec.m */; };
+		DD80D46020805CED007D2754 /* EZRNode+GraphSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9497FC1F74B6190092D6F4 /* EZRNode+GraphSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,14 +73,15 @@
 /* Begin PBXFileReference section */
 		06FB5E51790FB317BD73403D /* Pods-Benchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Benchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-Benchmark/Pods-Benchmark.release.xcconfig"; sourceTree = "<group>"; };
 		1CAFE6CCAA56AA86EC6D14E0 /* Pods_EasyReact_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyReact_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2221F3F91EC7933700897FAC /* EZRNode+Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "EZRNode+Operation.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		220634C42126B83A009EFE0A /* EZRSenderListSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZRSenderListSpec.m; sourceTree = "<group>"; };
+		2221F3F91EC7933700897FAC /* EZRNode+OperationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "EZRNode+OperationSpec.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2224F3391F27766C00C59BCD /* SwiftSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSpec.swift; path = TestSupportClasses/SwiftSpec.swift; sourceTree = "<group>"; };
 		222515D31F28823F00291583 /* beEmptyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beEmptyValue.swift; sourceTree = "<group>"; };
 		222515D71F28997600291583 /* EasyReact_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyReact_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		222515D81F28997700291583 /* receive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = receive.swift; sourceTree = "<group>"; };
 		22461FAD1ECAE48F008C3ED3 /* TestKVOClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKVOClass.h; sourceTree = "<group>"; };
 		22461FAE1ECAE48F008C3ED3 /* TestKVOClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKVOClass.m; sourceTree = "<group>"; };
-		22461FB01ECAE4EA008C3ED3 /* NSObject+ER_Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+ER_Extension.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		22461FB01ECAE4EA008C3ED3 /* NSObject+ER_ExtensionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+ER_ExtensionSpec.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		22964B572110314100AFC256 /* TestListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestListener.h; sourceTree = "<group>"; };
 		22964B582110314100AFC256 /* TestListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestListener.m; sourceTree = "<group>"; };
 		22994F1F20F4990E00587E34 /* EZRCancelableBagSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZRCancelableBagSpec.m; sourceTree = "<group>"; };
@@ -133,7 +135,7 @@
 		CE9497F71F73DF670092D6F4 /* BenchmarkResultProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BenchmarkResultProtocol.h; sourceTree = "<group>"; };
 		CE9497F91F73E23E0092D6F4 /* BenchmarkResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BenchmarkResult.h; sourceTree = "<group>"; };
 		CE9497FA1F73E23E0092D6F4 /* BenchmarkResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BenchmarkResult.m; sourceTree = "<group>"; };
-		CE9497FC1F74B6190092D6F4 /* EZRNode+Graph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "EZRNode+Graph.m"; sourceTree = "<group>"; };
+		CE9497FC1F74B6190092D6F4 /* EZRNode+GraphSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "EZRNode+GraphSpec.m"; sourceTree = "<group>"; };
 		CE9D3922208722FF00D7780D /* EZRListenContextSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZRListenContextSpec.m; sourceTree = "<group>"; };
 		CEB23C3B1F6B7DBE009C29FB /* Benchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Benchmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB23C3D1F6B7DBE009C29FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -147,7 +149,7 @@
 		CEB23C4C1F6B7DBE009C29FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEB23C511F6B7DDF009C29FB /* Benchmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Benchmark.h; sourceTree = "<group>"; };
 		CEB23C521F6B7DDF009C29FB /* Benchmark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Benchmark.m; sourceTree = "<group>"; };
-		CEBB9A1F207B132F00557A94 /* EZRNode+Value.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "EZRNode+Value.m"; sourceTree = "<group>"; };
+		CEBB9A1F207B132F00557A94 /* EZRNode+ValueSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "EZRNode+ValueSpec.m"; sourceTree = "<group>"; };
 		CEC8C2351F7A2CA9009C3BE6 /* matchGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matchGraph.swift; sourceTree = "<group>"; };
 		CECB7A181F39A82E005A6E47 /* AssertionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssertionHandler.h; sourceTree = "<group>"; };
 		CECB7A191F39A82E005A6E47 /* AssertionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssertionHandler.m; sourceTree = "<group>"; };
@@ -300,17 +302,18 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CE22ECCC20A98527003CE2EC /* EZRTransformSpec.m */,
-				2221F4011EC95F5B00897FAC /* TestSupportClasses */,
 				6003F5BB195388D20070C39A /* EZRNodeSpec.m */,
 				DD3A0500207254AA00682095 /* EZRMutableNodeSpec.m */,
-				2221F3F91EC7933700897FAC /* EZRNode+Operation.m */,
-				CE9497FC1F74B6190092D6F4 /* EZRNode+Graph.m */,
-				22461FB01ECAE4EA008C3ED3 /* NSObject+ER_Extension.m */,
-				6003F5B6195388D20070C39A /* Supporting Files */,
-				CEBB9A1F207B132F00557A94 /* EZRNode+Value.m */,
-				CE9D3922208722FF00D7780D /* EZRListenContextSpec.m */,
+				CE22ECCC20A98527003CE2EC /* EZRTransformSpec.m */,
+				220634C42126B83A009EFE0A /* EZRSenderListSpec.m */,
 				22994F1F20F4990E00587E34 /* EZRCancelableBagSpec.m */,
+				CE9D3922208722FF00D7780D /* EZRListenContextSpec.m */,
+				CEBB9A1F207B132F00557A94 /* EZRNode+ValueSpec.m */,
+				CE9497FC1F74B6190092D6F4 /* EZRNode+GraphSpec.m */,
+				2221F3F91EC7933700897FAC /* EZRNode+OperationSpec.m */,
+				22461FB01ECAE4EA008C3ED3 /* NSObject+ER_ExtensionSpec.m */,
+				6003F5B6195388D20070C39A /* Supporting Files */,
+				2221F4011EC95F5B00897FAC /* TestSupportClasses */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -695,18 +698,19 @@
 			files = (
 				CE9D85CD20804E0D00CCAEF3 /* EZRMutableNodeSpec.m in Sources */,
 				CE22ECCF20A985BB003CE2EC /* EZRTransformSpec.m in Sources */,
-				DD80D45F208051E7007D2754 /* NSObject+ER_Extension.m in Sources */,
+				DD80D45F208051E7007D2754 /* NSObject+ER_ExtensionSpec.m in Sources */,
+				220634C52126B83A009EFE0A /* EZRSenderListSpec.m in Sources */,
 				CECB7A1E1F39B72A005A6E47 /* hasAssert.swift in Sources */,
 				222515D21F287F2C00291583 /* CustomMatchers.m in Sources */,
-				CE9D85CF208060E300CCAEF3 /* EZRNode+Value.m in Sources */,
+				CE9D85CF208060E300CCAEF3 /* EZRNode+ValueSpec.m in Sources */,
 				2224F33B1F27768000C59BCD /* SwiftSpec.swift in Sources */,
 				22964B592110314100AFC256 /* TestListener.m in Sources */,
 				22994F2120F499EB00587E34 /* EZRCancelableBagSpec.m in Sources */,
 				CE9D85CC207F5AA800CCAEF3 /* EZRNodeSpec.m in Sources */,
 				CE9D3923208722FF00D7780D /* EZRListenContextSpec.m in Sources */,
-				DD80D46020805CED007D2754 /* EZRNode+Graph.m in Sources */,
+				DD80D46020805CED007D2754 /* EZRNode+GraphSpec.m in Sources */,
 				2233CD831ECDC8B700C9E016 /* TestKVOClass.m in Sources */,
-				CE9D85CE2080574C00CCAEF3 /* EZRNode+Operation.m in Sources */,
+				CE9D85CE2080574C00CCAEF3 /* EZRNode+OperationSpec.m in Sources */,
 				CECB7A1A1F39A82E005A6E47 /* AssertionHandler.m in Sources */,
 				CEC8C2361F7A2CA9009C3BE6 /* matchGraph.swift in Sources */,
 				CE7038AB1F32D54C00322AF8 /* beEmptyValue.swift in Sources */,
