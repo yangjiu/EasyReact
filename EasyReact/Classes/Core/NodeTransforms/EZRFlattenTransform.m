@@ -70,7 +70,9 @@
             [self _superNext:next from:insideSenderList context:insideContext];
         }
     }];
-    if (!node.isEmpty) {
+    if (node.isEmpty) {
+        [self.nextReceiver emptyFrom:[senderList appendNewSender:node] context:context];
+    } else {
         [super next:node.value from:[senderList appendNewSender:node] context:context];
     }
 }
