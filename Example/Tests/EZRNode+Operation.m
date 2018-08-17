@@ -687,9 +687,37 @@ describe(@"EZRNode", ^{
             expect(insideNode.value).to(equal(@5));
             insideNode.value = @7;
             expect(flattenedNode.value).to(equal(@7));
-            
         });
-    
+        
+        it(@"should be listened right sender list", ^{
+            EZRMutableNode<NSNumber *> *node = [EZRMutableNode new];
+            EZRMutableNode<NSNumber *> *insideNode = [EZRMutableNode value:@1];
+            EZRNode *flattenedNode = [node flattenMap:^EZRNode * _Nullable(NSNumber * _Nullable next) {
+                return insideNode;
+            }];
+            NSObject *listener = [NSObject new];
+            __block EZRSenderList *listenedSenderList = nil;
+            [[flattenedNode listenedBy:listener] withSenderListAndContextBlock:^(id  _Nullable next, EZRSenderList * _Nonnull senderList, id  _Nullable context) {
+                listenedSenderList = senderList;
+            }];
+            node.value = @10;
+            expect([listenedSenderList contains:node]).to(beTrue());
+            expect([listenedSenderList contains:insideNode]).to(beTrue());
+            insideNode.value = @2;
+            expect([listenedSenderList contains:node]).to(beFalse());
+            expect([listenedSenderList contains:insideNode]).to(beTrue());
+        });
+        
+        it(@"value should be empty when mapping a empty node", ^{
+            EZRMutableNode<EZRNode<NSNumber *> *> *node = [EZRMutableNode new];
+            EZRNode *flattenedNode = [node flattenMap:^EZRNode * _Nullable(EZRNode<NSNumber *> * _Nullable nextNode) {
+                return nextNode;
+            }];
+            node.value = [EZRNode value:@2];
+            expect(flattenedNode.value).to(equal(@2));
+            node.value = [EZRNode new];
+            expect(flattenedNode).to(beEmptyValue());
+        });
     
         it(@"can be released correctly", ^{
             expectCheckTool(^(CheckReleaseTool *checkTool) {
@@ -1534,6 +1562,33 @@ describe(@"EZRNode", ^{
         expect(anotherlilei).to(receive(@[@" Hello? Anybody here?",
                                           @" Hello? Anybody here Again?"]));
         expect(hanmeimeiSaid).to(receive(@[@" I'm Han Meimei"]));
+    });
+    
+    it(@"should be listened right sender list", ^{
+        EZRMutableNode<NSNumber *> *node = [[EZRMutableNode new] named:@"origin"];
+        EZRNode<EZRSwitchedNodeTuple<id> *> *nodes = [[node switchMap:^EZTuple2<id<NSCopying>,id> * _Nonnull(NSNumber * _Nullable next) {
+            NSString *key = nil;
+            if (next.integerValue > 0) {
+                key = @"positive";
+            }
+            if (next.integerValue == 0) {
+                key = @"zero";
+            }
+            if (next.integerValue < 0) {
+                key = @"negative";
+            }
+            return EZTuple(key, next);
+        }] named:@"switched"];
+        EZRNode<NSNumber *> *positive = [[nodes case:@"positive"] named:@"cased"];
+        NSObject *listener = [NSObject new];
+        __block EZRSenderList *listenedSenderList = nil;
+        [[positive listenedBy:listener] withSenderListAndContextBlock:^(NSNumber * _Nullable next, EZRSenderList * _Nonnull senderList, id  _Nullable context) {
+            listenedSenderList = senderList;
+        }];
+        node.value = @1;
+        expect([listenedSenderList contains:node]).to(beTrue());
+        expect([listenedSenderList contains:nodes]).to(beTrue());
+        expect([listenedSenderList contains:positive]).to(beTrue());
     });
     
     it(@"can split 2 value sequences from origin sequence use if operation", ^{

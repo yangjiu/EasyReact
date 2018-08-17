@@ -150,6 +150,10 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
 }
 
 - (void)setValue:(id)value context:(nullable id)context {
+    [self setValue:value senderList:nil context:context];
+}
+
+- (void)setValue:(id)value senderList:(nullable EZRSenderList *)senderList context:(nullable id)context {
     if EZR_LikelyNO(!self.isMutable) {
         EZR_THROW(EZRNodeExceptionName, EZRExceptionReason_CannotModifyEZRNode, nil);
     }
@@ -158,7 +162,13 @@ static inline EZSFliterBlock _EZR_PropertyExists(NSString *keyPath) {
         NSLog(@"[EasyReact Warning] The node has no listeners .The value is: %@",value);
     }
 #endif
-    [self next:value from:[EZRSenderList new] context:context];
+    EZRSenderList *currentSenderList = nil;
+    if (senderList == nil) {
+        currentSenderList = [EZRSenderList new];
+    } else {
+        currentSenderList = senderList;
+    }
+    [self next:value from:currentSenderList context:context];
 }
 
 - (void)clean {

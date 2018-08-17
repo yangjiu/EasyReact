@@ -60,4 +60,16 @@
     return NO;
 }
 
+- (NSString *)description {
+    NSMutableString *description = [[super description] mutableCopy];
+    [description appendString:@"{\n"];
+    EZRSenderList *currentList = self;
+    while (currentList.value) {
+        [description appendString:[currentList.value description]];
+        [description appendString:@"->\n"];
+        currentList = currentList.prev;
+    }
+    [description appendString:@"nil\n}"];
+    return description;
+}
 @end

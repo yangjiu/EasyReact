@@ -63,7 +63,7 @@ static BOOL EZR_instanceEqual(id left, id right) {
         self.lastNode = next.second;
         @ezr_weakify(self)
         self.cancelable = [[next.second listenedBy:self] withSenderListAndContextBlock:^(id  _Nullable value, EZRSenderList * _Nonnull insideSenderList, id  _Nullable insideContext) {
-           @ezr_strongify(self)
+            @ezr_strongify(self)
             [self _superNext:value from:insideSenderList context:insideContext];
         }];
     }

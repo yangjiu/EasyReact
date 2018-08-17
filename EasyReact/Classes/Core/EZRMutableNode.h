@@ -18,6 +18,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class EZRSenderList;
+
 /**
  Mutable version of EZRNode, provide the ability of assigning value to node.
  Provides the ability to transmit the assigned new value to downstream nodes also.
@@ -46,6 +48,15 @@ NS_ASSUME_NONNULL_BEGIN
  @param context     Context
  */
 - (void)setValue:(nullable T)value context:(nullable id)context;
+
+/**
+ Sets value to node, attach a context if needed and given a sender list, the context will be transfer to downstream nodes and listeners.
+ 
+ @param value       Value of the node
+ @param senderList  Given sender list
+ @param context     Context
+ */
+- (void)setValue:(nullable T)value senderList:(nullable EZRSenderList *)senderList context:(nullable id)context;
 
 /**
  Cleans the receiver's value to EZREmpty.empty.

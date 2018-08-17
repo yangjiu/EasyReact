@@ -17,6 +17,7 @@
 #import "EZRSwitchMapTransform.h"
 #import "EZRMetaMacrosPrivate.h"
 #import "EZRMutableNode.h"
+#import "EZRSenderList.h"
 
 @implementation EZRSwitchMapTransform {
     @private
@@ -61,7 +62,11 @@
             }
         }
         [super next:EZTuple(key, valueNode) from:senderList context:context];
-        [valueNode setValue:mappedValue context:context];
+        EZRSenderList *currentSenderList = senderList;
+        if (self.to) {
+            currentSenderList = [senderList appendNewSender:self.to];
+        }
+        [valueNode setValue:mappedValue senderList:currentSenderList context:context];
     }
 }
 
