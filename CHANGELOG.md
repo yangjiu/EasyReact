@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - EZRPerformSelectorListen edge. [ISSUE 28](https://github.com/meituan/EasyReact/issues/28)
 - Print warning message when set values to node which no downstreams.
+- setValue:senderList:context method within NSMutableNode. [ISSUE 42](https://github.com/meituan/EasyReact/issues/42)
 
 ### Fixed
 
