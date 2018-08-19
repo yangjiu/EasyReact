@@ -26,7 +26,7 @@
 - (void)addCancelable:(id<EZRCancelable>)cancelable;
 
 /**
- Removes the cancelable object from the bag
+ Removes the cancelable object from the bag.
 
  @param cancelable  Object which can be cancelled
  */
