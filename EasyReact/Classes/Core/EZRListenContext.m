@@ -102,7 +102,6 @@
     if (block == nil || queue == NULL) { return [[EZRBlockCancelable alloc] initWithBlock:^{}]; }
     EZRDeliveredListen *handler = [[EZRDeliveredListen alloc] initWithBlock:block on:queue];
     return [self withListenEdge:handler];
-    
 }
 
 - (id<EZRCancelable>)withBlockOnMainQueue:(void (^)(id _Nullable))block {
