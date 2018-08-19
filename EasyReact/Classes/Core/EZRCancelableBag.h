@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Class that is able to implement cancel action for EZRCancelable object in batch.
- When current object calls cancel method or is being released, all added EZRCancelable objects will call cancel methed and clean the holding relationship
+ When current object calls cancel method or is being released, all added EZRCancelable objects will call cancel methed and clean the holding relationship.
  */
 @interface EZRCancelableBag : NSObject <EZRCancelableBagProtocol>
 
