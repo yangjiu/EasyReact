@@ -147,7 +147,6 @@ static NSMutableSet *swizzledClasses() {
     dispatch_once(&onceToken, ^{
         swizzledClasses = [[NSMutableSet alloc] init];
     });
-    
     return swizzledClasses;
 }
 
