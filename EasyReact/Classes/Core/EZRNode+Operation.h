@@ -319,42 +319,42 @@ EZTNamedTupleDef(EZRSwitchedNodeTuple, T)
 @interface EZRNode<T: id> (SwitchCase)
 
 /**
- Using the return key of 'switchBlock' to group the future values of current node. If there is no corresponding downstream node for current key, a new node will be created. it is usually used to separate various return nodes, and we can get the specific key value node through 'if', 'case', 'default' operation afterwards.
+ Using the return key of 'switchBlock' to group the future values of current node. If there is no corresponding downstream node for current key, a new node will be created. It is usually used to separate various return nodes, and we can get the specific key value node through 'if', 'case', 'default' operation afterwards.
 
- @param switchBlock         Block used for grouping
- @return                    EZRNode whose value is kind of EZRSwitchedNodeTuple
+ @param switchBlock    Block used for grouping
+ @return               EZRNode whose value is kind of EZRSwitchedNodeTuple
  */
 - (EZRNode<EZRSwitchedNodeTuple<T> *> *)switch:(id<NSCopying> _Nullable (^)(T _Nullable next))switchBlock;
 
 
 /**
- Using the return key of 'switchBlock' to group the future values of current node. If there is no corresponding downstream node for current key, a new node will be created. it is usually used to separate various return nodes, and wen can get the specific key value node through 'if', 'case', 'default' operation afterwards.
+ Using the return key of 'switchBlock' to group the future values of current node. If there is no corresponding downstream node for current key, a new node will be created. It is usually used to separate various return nodes, and wen can get the specific key value node through 'if', 'case', 'default' operation afterwards.
  
- @param switchMapBlock      Block used for grouping
- @return                    EZRNode whose value is kind of EZRSwitchedNodeTuple
+ @param switchMapBlock    Block used for grouping
+ @return                  EZRNode whose value is kind of EZRSwitchedNodeTuple
  */
 - (EZRNode<EZRSwitchedNodeTuple<id> *> *)switchMap:(EZTuple2<id<NSCopying>, id> *(^)(T _Nullable next))switchMapBlock;
 
 /**
  Filters the node created by - [EZRNode switch:] or - [EZRNode switchMap:] into the one that corresponds to specific key.
 
- @param key         Specific key
- @return            Node whose value corresponds to specific key.
+ @param key    Specific key
+ @return       Node whose value corresponds to specific key.
  */
 - (EZRNode *)case:(nullable id<NSCopying>)key;
 
 /**
- Separates current node into node that satisfies condition and node not satisfies. like [[EZRNode switch:] case:@YES] and [[EZRNode switch:] case:@NO]
+ Separates current node into node that satisfies condition and node not satisfies. Like [[EZRNode switch:] case:@YES] and [[EZRNode switch:] case:@NO].
 
- @param block       Judge rules for separating node
- @return            Tuple of node after separation
+ @param block    Judge rules for separating node
+ @return         Tuple of node after separation
  */
 - (EZRIFResult<T> *)if:(BOOL (^)(T _Nullable next))block;
 
 /**
- Operation that matches nil. nil could be also used as key
+ Operation that matches nil. nil could be also used as key.
 
- @return            Node using nil as key
+ @return    Node using nil as key
  */
 - (EZRNode *)default;
 
