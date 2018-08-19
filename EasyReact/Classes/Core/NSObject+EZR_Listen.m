@@ -42,7 +42,6 @@ static void *EZR_NodeContextKey = &EZR_NodeContextKey;
             context = [[EZRListenContext alloc] initWithNode:node listener:self] ;
             nodeContext[uniqueKey] = context;
         }
-
         return context;
     }
 }
@@ -69,6 +68,5 @@ static void *EZR_NodeContextKey = &EZR_NodeContextKey;
     }
     return nodeContext;
 }
-
 
 @end

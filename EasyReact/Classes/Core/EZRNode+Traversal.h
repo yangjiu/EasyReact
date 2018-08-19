@@ -27,15 +27,15 @@
 
  @param node    EZRNode
  @param deep    Depth, negative for upwards and positive for downwards
- @return        A boolean value to indicate whether the traversing finished.
+ @return        A boolean value to indicate whether the traversing finished
  */
 - (BOOL)visitNode:(EZRNode *)node deep:(NSInteger)deep;
 
 /**
  Visits from a transformation by a given depth, and returns a boolean value to indicate whether the traversing finished.
 
- @param transform   Transforming edge
- @return            A boolean value to indicate whether the traversing finished.
+ @param transform    Transforming edge
+ @return             A boolean value to indicate whether the traversing finished
  */
 - (BOOL)visitTransform:(id<EZRTransformEdge>)transform;
 
@@ -46,7 +46,7 @@
 /**
  Begin traversing by a given visitor object.
 
- @param visitor     Visitor object
+ @param visitor    Visitor object
  */
 - (void)traversal:(id<EZRNodeVisitor>)visitor;
 

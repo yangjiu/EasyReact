@@ -339,7 +339,7 @@ EZTNamedTupleDef(EZRSwitchedNodeTuple, T)
  Filters the node created by - [EZRNode switch:] or - [EZRNode switchMap:] into the one that corresponds to specific key.
 
  @param key    Specific key
- @return       Node whose value corresponds to specific key.
+ @return       Node whose value corresponds to specific key
  */
 - (EZRNode *)case:(nullable id<NSCopying>)key;
 
