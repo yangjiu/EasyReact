@@ -33,7 +33,7 @@
 
 @end
 
-// For Swift Protocol Extension
+// For swift protocol extension
 static inline NSString *transformDotString(id<EZREdge> self) {
     return [NSString stringWithFormat:@"  er_%p -> er_%p[label=\"%@\"]", self.from, self.to, self.name];
 }
