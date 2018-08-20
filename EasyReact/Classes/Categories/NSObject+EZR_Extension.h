@@ -24,19 +24,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (EZR_Extension)
 
 /**
- Object which implements subscript method, used for extending the KVO and KVC of the Foundation object's property and transforming into ERZNode
+ Object which implements subscript method, used for extending the KVO and KVC of the Foundation object's property and transforming into ERZNode.
  */
 @property (nonatomic, readonly, strong) EZRPathTrampoline *ezr_path;
 
 /**
- Generates an immutable node object using current object
+ Generates an immutable node object using current object.
 
  @return    Immutable object whose initial value is current object
  */
 - (EZRNode *)ezr_toNode;
 
 /**
- Generates a mutable node object using current object
+ Generates a mutable node object using current object.
 
  @return    Mutable object whose initial value is current object
  */

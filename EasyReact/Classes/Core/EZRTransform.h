@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class EZRNode, EZRSenderList;
 
 /**
- EZRTransform represents a kind of transformation from node to node. The Default implementation is passing value to downstrean node directly. Category can be extended on demand afterwards
+ EZRTransform represents a kind of transformation from node to node. The Default implementation is passing value to downstrean node directly. Category can be extended on demand afterwards.
  */
 @interface EZRTransform : NSObject <EZRTransformEdge>
 
@@ -63,9 +63,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @/textblock</pre>
  
- @param value           The latest value
- @param senderList      A list of sender node, used in judging whether a circle occurs
- @param context         Context that comes from upstream node
+ @param value         The latest value
+ @param senderList    A list of sender node, used in judging whether a circle occurs
+ @param context       Context that comes from upstream node
  */
 - (void)next:(nullable id)value from:(EZRSenderList *)senderList context:(nullable id)context;
 

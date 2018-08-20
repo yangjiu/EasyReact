@@ -21,24 +21,24 @@
 /**
  This protocol represents a directed edge in Graph Theory for EasyReact.
  EZREdge owns source and target object, when source and target object could be any kind of class.
- Normally, we use EZRTransformEdge to represent the relationship between nodes themsleves and use EZRListenEdge to represent the relationship between node and listener
+ Normally, we use EZRTransformEdge to represent the relationship between nodes themsleves and use EZRListenEdge to represent the relationship between node and listener.
  */
 @protocol EZREdge <NSObject>
 
 @required;
 
 /**
- Name of the directed edge, used for data visualized debugging function
+ Name of the directed edge, used for data visualized debugging function.
  */
 @property (nonatomic, readwrite, copy, nullable) NSString *name;
 
 /**
- Upstream node where the edge comes from, data transmission will happen when both upstream and downstream node have values
+ Upstream node where the edge comes from, data transmission will happen when both upstream and downstream node have values.
  */
 @property (atomic, strong, nullable) id from;
 
 /**
- Downstream node where the edge directs to, data transmission will happen when both upstream and downstream node have values
+ Downstream node where the edge directs to, data transmission will happen when both upstream and downstream node have values.
  */
 @property (atomic, weak, nullable) id to;
 

@@ -18,15 +18,15 @@
 
 /**
  A value object that defines empty.
- @discusstion EZRNode supports nil, so we needs EZREmpty to represent empty semantically
- Assigning the EZREmpty object to a node will stop data transmission to downstream nodes
+ @discusstion EZRNode supports nil, so we needs EZREmpty to represent empty semantically.
+ Assigning the EZREmpty object to a node will stop data transmission to downstream nodes.
  */
 @interface EZREmpty : NSObject
 
 /**
  Returns an instance to represent empty value.
 
- @return    instance of the sentry object
+ @return    Instance of the sentry object
  */
 + (instancetype)empty;
 

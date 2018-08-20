@@ -19,7 +19,7 @@
 @interface EZRNode (Graph)
 
 /**
- Returns a string to describe the topology associated with the receiver. The string is dot language code used for generating a static image via *graphiz* tool while debugging. See also [The dot language](https://www.graphviz.org/doc/info/lang.html) .
+ Returns a string to describe the topology associated with the receiver. The string is dot language code used for generating a static image via *graphiz* tool while debugging. See also [The dot language](https://www.graphviz.org/doc/info/lang.html).
  
  Usage
  1. Install 'graphviz' command line tool in Mac OS system
@@ -40,7 +40,7 @@
  
  @/textblock</pre>
 
- @return    dot language string corresponding to GraphViz
+ @return    Dot language string corresponding to GraphViz
  */
 - (NSString *)graph;
 

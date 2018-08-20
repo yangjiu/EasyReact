@@ -28,7 +28,7 @@ NSString *EZRNodeExceptionName = @"EZRNodeException";
 
 @dynamic value, name, mutable;
 
-// private for subClass
+// Private for subclass
 - (instancetype)initDirectly  {
     if (self = [super init]) {
         

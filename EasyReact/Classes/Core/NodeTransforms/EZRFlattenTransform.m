@@ -64,8 +64,8 @@
     @ezr_weakify(self)
     self.cancelable = [[node listenedBy:self] withSenderListAndContextBlock:^(id  _Nullable next, EZRSenderList * _Nonnull insideSenderList, id  _Nullable insideContext) {
         @ezr_strongify(self)
-        // The first transmit is from high-order node
-        // Transmits will be from current node since the second time
+        // The first transmit is from high-order node.
+        // Transmits will be from current node since the second time.
         if (self.cancelable) {
             [self _superNext:next from:insideSenderList context:insideContext];
         }

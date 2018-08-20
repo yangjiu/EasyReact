@@ -21,7 +21,7 @@
 @interface EZRNode<T> (Mutable)
 
 /**
- Modifies the receiver into mutable status
+ Modifies the receiver into mutable status.
  @note The returned node is the same instance with the receiver.
 
  @return    Mutable node

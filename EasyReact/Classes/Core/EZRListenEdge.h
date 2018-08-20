@@ -23,7 +23,7 @@
 @protocol EZRListenEdge <EZREdge, EZRNextReceiver>
 
 /**
- The upstream value of the EZRTransformEdge
+ The upstream value of the EZRTransformEdge.
  */
 @property (atomic, strong, nullable) EZRNode *from;
 

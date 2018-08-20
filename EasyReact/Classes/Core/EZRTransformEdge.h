@@ -25,17 +25,17 @@
 @protocol EZRTransformEdge <EZREdge, EZRNextReceiver>
 
 /**
- The upstream value of the EZRTransformEdge
+ The upstream value of the EZRTransformEdge.
  */
 @property (atomic, strong, nullable) EZRNode *from;
 
 /**
- The downstream value of the EZRTransformEdge
+ The downstream value of the EZRTransformEdge.
  */
 @property (atomic, weak, nullable) EZRNode *to;
 
 /**
- Represent the next instance which can receive the value senderlist and context
+ Represent the next instance which can receive the value senderlist and context.
  */
 @property (atomic, weak, nullable) id<EZRNextReceiver> nextReceiver;
 

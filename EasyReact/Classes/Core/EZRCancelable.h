@@ -19,7 +19,7 @@
 @required
 
 /**
- Executes the cancel action
+ Executes the cancel action.
  */
 - (void)cancel;
 

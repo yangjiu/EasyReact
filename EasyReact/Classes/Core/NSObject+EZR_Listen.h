@@ -29,15 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
  We suggest using 'ListenedBy:' method defined in EZRNode+Listen, which is able to transmit genericity, for the convenience of type inferences for later API.
  
  @see - [EZRNode+Listen ListenedBy:]
- @param node        Node being listened
- @return            EZRListenContext instance that can be attached additional actions
+ @param node    Node being listened
+ @return        EZRListenContext instance that can be attached additional actions
  */
 - (EZRListenContext *)listen:(EZRNode *)node;
 
 /**
- Stops observing node
+ Stops observing node.
 
- @param node        Node being listened
+ @param node    Node being listened
  */
 - (void)stopListen:(EZRNode *)node;
 

@@ -81,31 +81,31 @@ extern NSString *EZRExceptionReason_CannotModifyEZRNode;
 @property (atomic, readonly, assign) BOOL hasListener;
 
 /**
- A Boolean value that indicates whether the node is equal to EZREmpty.empty
+ A Boolean value that indicates whether the node is equal to EZREmpty.empty.
  The feature of empty is that EZREmpty.empty will not trigger listeners, nor change the downstream nodes.
  */
 @property (atomic, readonly, assign, getter=isEmpty) BOOL empty;
 
 /**
- Initializes a new node with EZREmpty.empty
+ Initializes a new node with EZREmpty.empty.
 
- @return        New node instance
+ @return    New node instance
  */
 - (instancetype)init;
 
 /**
- Initializes a node with the given value
+ Initializes a node with the given value.
 
- @param value   Initial value
- @return        New node instance
+ @param value    Initial value
+ @return         New node instance
  */
 - (instancetype)initWithValue:(nullable T)value NS_DESIGNATED_INITIALIZER;
 
 /**
- Returns a node with a given value
+ Returns a node with a given value.
 
- @param value   Initial value
- @return        New node instance
+ @param value    Initial value
+ @return         New node instance
  */
 + (instancetype)value:(nullable T)value;
 
@@ -120,23 +120,23 @@ extern NSString *EZRExceptionReason_CannotModifyEZRNode;
 /**
  Returns the receiver instance named by using a given format string.
 
- @param format  Formatted string
- @param ...     Variadic parameter lists
- @return        Node instance
+ @param format    Formatted string
+ @param ...       Variadic parameter lists
+ @return          Node instance
  */
 - (instancetype)namedWithFormat:(NSString *)format, ...;
 
 /**
  Links to a given upstream node using a specific transformation. The receiver will be the downstream node.
 
- @param node        Upstream node which wants to link to
- @param transform   Transforming action between upstream node
- @return            EZRCancelable object whose link can be cancelable
+ @param node         Upstream node which wants to link to
+ @param transform    Transforming action between upstream node
+ @return             EZRCancelable object whose link can be cancelable
  */
 - (id<EZRCancelable>)linkTo:(EZRNode *)node transform:(id<EZRTransformEdge>)transform;
 
 /**
- Links to a given upstream node. The receiver will be the downstream node and will keep the same value with the given upstream node
+ Links to a given upstream node. The receiver will be the downstream node and will keep the same value with the given upstream node.
 
  @param node    Upstream node which wants to link to
  @return        EZRCancelable object whose link can be cancelable
@@ -146,8 +146,8 @@ extern NSString *EZRExceptionReason_CannotModifyEZRNode;
 /**
  Finds the receiver's downstream transformations those linked to a given node. If not found, an empty array will be returned.
 
- @param to      Downstream node
- @return        Array of downstream edges
+ @param to    Downstream node
+ @return      Array of downstream edges
  */
 - (NSArray<id<EZRTransformEdge>> *)downstreamTransformsToNode:(EZRNode *)to;
 
@@ -162,12 +162,12 @@ extern NSString *EZRExceptionReason_CannotModifyEZRNode;
 /**
  Removes a specific downstream node, if any. The transformation connected to the specific downstream node will be removed also.
 
- @param downstream  The downstream node that will be removed
+ @param downstream    The downstream node that will be removed
  */
 - (void)removeDownstreamNode:(EZRNode *)downstream;
 
 /**
- Removes all downstream nodes of the receiver
+ Removes all downstream nodes of the receiver.
  */
 - (void)removeDownstreamNodes;
 
@@ -179,7 +179,7 @@ extern NSString *EZRExceptionReason_CannotModifyEZRNode;
 - (void)removeUpstreamNode:(EZRNode *)upstream;
 
 /**
- Removes all upstream nodes of the receiver
+ Removes all upstream nodes of the receiver.
  */
 - (void)removeUpstreamNodes;
 
