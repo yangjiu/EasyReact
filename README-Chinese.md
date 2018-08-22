@@ -158,6 +158,12 @@ qiezishu, [qiezishu@yahoo.com](mailto:qiezishu@yahoo.com)
 
 EasyReact 使用 [Apache Public License 2.0 许可证](./LICENSE)。
 
+## 相关文章
+
+- [美团客户端响应式框架 EasyReact 开源啦](https://tech.meituan.com/react_programming_framework_easyreact_opensource.html)
+- [EasyReact的简单试用及和RAC的对比](https://juejin.im/post/5b7bb2f651882542b60ea570)
+- [「 iOS知识小集 」2018 · 第 25 期——简单聊聊美团 EasyReact](https://mp.weixin.qq.com/s/AtwyT_eR3DWtBtBpm63uig)
+
 ## 其他
 
 想要一起共同发展 EasyReact 么？发送简历到 [邮件](mailto:it_easyreact@meituan.com) 加入我们！
