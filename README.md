@@ -104,7 +104,7 @@ Then execute `pod install`
 
 EasyReact contains a complete unit test with the relevant code in the Example/Tests folder. You can open the sample project and execute the Test command to run these unit tests.
 
-## Time-consuming Benchmarking with EasyReact, ReactiveCocoa, RxSwift Common APIs
+## Time-consuming Benchmarking with EasyReact and ReactiveCocoa Common APIs
 
 ### Environment
 
