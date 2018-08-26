@@ -104,7 +104,7 @@ pod 'EasyReact'
 
 EasyReact 包含了完善的单元测试，相关代码在 Example/Tests 文件夹下。你可以打开示例工程并执行 Test 命令来运行这些单元测试。
 
-## EasyReact, ReactiveCocoa, RxSwift 常见API 基于耗时的 Benchmarking
+## EasyReact 和 ReactiveCocoa 常见API 基于耗时的 Benchmarking
 
 ### 测试环境
 
