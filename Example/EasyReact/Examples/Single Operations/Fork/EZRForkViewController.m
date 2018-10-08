@@ -19,6 +19,7 @@
 #import "UITextField+EZR_Extension.h"
 
 @interface EZRForkViewController ()
+    
 @property (weak, nonatomic) IBOutlet UITextField *aTextField;
 @property (weak, nonatomic) IBOutlet UITextField *bTextField;
 

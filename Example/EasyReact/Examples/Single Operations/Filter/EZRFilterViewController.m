@@ -20,6 +20,7 @@
 #import "EZRJSVM.h"
 
 @interface EZRFilterViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *aTextField;
 @property (weak, nonatomic) IBOutlet UITextField *filterTextField;
 @property (weak, nonatomic) IBOutlet UITextField *bTextField;
@@ -43,7 +44,6 @@
         if (self.filterBlock(next)) {
             self.bTextField.text = self.aTextField.text;
         }
-        
     }];
 }
 
@@ -55,4 +55,5 @@
         return [value toBool];
     };
 }
+
 @end

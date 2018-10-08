@@ -20,6 +20,7 @@
 #import "EZRJSVM.h"
 
 @interface EZRCombineViewController ()
+    
 @property (weak, nonatomic) IBOutlet UITextField *aTextField;
 @property (weak, nonatomic) IBOutlet UITextField *bTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cTextField;
