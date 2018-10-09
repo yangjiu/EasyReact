@@ -87,7 +87,7 @@ NSString * const EZRExceptionReason_CasedNodeMustGenerateBySwitchOrSwitchMapOper
     }];
 }
 
-- (EZRNode *)then:(void(^)(EZRNode<id> *node))thenBlock {
+- (EZRNode *)then:(void(^NS_NOESCAPE)(EZRNode<id> *node))thenBlock {
     NSParameterAssert(thenBlock);
     if (thenBlock) {
         thenBlock(self);
@@ -311,7 +311,7 @@ EZTNamedTupleImp(EZRSwitchedNodeTuple)
 
 @implementation EZRIFResult (Extension)
 
-- (EZRIFResult *)then:(void (^)(EZRNode<id> * _Nonnull))thenBlock {
+- (EZRIFResult *)then:(void (^NS_NOESCAPE)(EZRNode<id> * _Nonnull))thenBlock {
      NSParameterAssert(thenBlock);
     if (thenBlock) {
         thenBlock(self.thenNode);
@@ -319,7 +319,7 @@ EZTNamedTupleImp(EZRSwitchedNodeTuple)
     return self;
 }
 
-- (EZRIFResult *)else:(void (^)(EZRNode<id> * _Nonnull))elseBlock {
+- (EZRIFResult *)else:(void (^NS_NOESCAPE)(EZRNode<id> * _Nonnull))elseBlock {
     NSParameterAssert(elseBlock);
     if (elseBlock) {
         elseBlock(self.elseNode);

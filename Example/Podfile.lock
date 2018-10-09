@@ -4,14 +4,14 @@ PODS:
     - EasyTuple (~> 1.1.0)
   - EasyReact (2.2.1):
     - EasyFoundation (~> 1.0.0)
-  - EasySequence (1.3.0)
+  - EasySequence (1.3.1)
   - EasyTuple (1.1.2)
-  - Nimble (7.1.3)
+  - Nimble (7.3.1)
   - OCHamcrest (7.1.1)
   - OCMock (3.4.2)
-  - OCMockito (5.1.0):
+  - OCMockito (5.1.1):
     - OCHamcrest (~> 7.0)
-  - Quick (1.3.0)
+  - Quick (1.3.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -19,7 +19,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - RxSwift (4.2.0)
+  - RxSwift (4.3.1)
 
 DEPENDENCIES:
   - EasyReact (from `../`)
@@ -50,15 +50,15 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   EasyFoundation: a4bb86dd4ba01cb720f5320c314c5628ee237acd
   EasyReact: 44057b73573a4a28e5a8ca463523a793953900de
-  EasySequence: 1db9bb7b915052d3589d79c30ece1f0e160af550
+  EasySequence: 78462a0b839cb6b8a18e30a5adc37055bac0b929
   EasyTuple: a6a068ab3aa47e899a0c9f9ee23ddb394542ea9e
-  Nimble: 2839b01d1b31f6a6a7777a221f0d91cf52e8e27b
+  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   OCHamcrest: 3506736397451c35d8763ff0a9b13492e544115f
   OCMock: ebe9ee1dca7fbed0ff9193ac0b3e2d8862ea56f6
-  OCMockito: f420d00dc5ffbb7452f9f499cd1766e6583d61a5
-  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
+  OCMockito: eccb29c256cbdd6c7bc206718cbb06ef737daa8b
+  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
 
 PODFILE CHECKSUM: 5c9bd19a689537463f1d1a4dddd8e362df15e18a
 
