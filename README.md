@@ -108,11 +108,11 @@ EasyReact contains a complete unit test with the relevant code in the Example/Te
 
 ### Environment
 
-Build Platform: macOS High Sierra 10.13.5
+Build Platform: macOS Mojave 10.14
 
-IDE: Xcode 9.4.1
+IDE: Xcode 10.0(10A255)
 
-Device: iPhone X 256G iOS 11.4(15F79)
+Device: iPhone XS Max 256G iOS 12.0(16A366)
 
 ### Cases
 
@@ -127,17 +127,17 @@ The unit of time is ns.
 
 Repeat the above experiment 10 times to get the data as follows:
 
-| name          | listener | map      | filter   | flattenMap | combine   | zip       | merge    | syncWith |
-| ------------- | -------- | -------- | -------- | ---------- | --------- | --------- | -------- | -------- |
-| EasyReact     | 1860665  | 30285707 | 7043007  | 7259761    | 6234540   | 63384482  | 19794457 | 12359669 |
-| ReactiveCocoa | 4054261  | 74416369 | 45095903 | 44675757   | 209096028 | 143311669 | 13898969 | 53619799 |
-| RAC:EasyReact | 217.89%  | 245.71%  | 640.29%  | 615.39%    | 3353.83%  | 226.10%   | 70.22%   | 433.83%  |
+|name|listener|map|filter|flattenMap|combine|zip|merge|syncWith|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|EasyReact|4218689|26615802|9872381|9896752|5744164|48405085|29639206|11846827|
+|ReactiveCocoa|2263981|42883385|28768289|28810331|127882031|82689281|6809210|30935277|
+|RAC:EasyReact|53.7%|161.1%|291.4%|291.1%|2226.3%|170.8%|23.0%|261.1%|
 
 ![benchmark](./images/benchmark.png)
 
 ### Summary
 
-ReactiveCocoa's average time consuming is 725.41% times more than EasyReact.
+ReactiveCocoa's average time consuming is 434.8% times more than EasyReact.
 
 EasyReact will compare benchmark with RxSwift when the Swift version open source recently.
 
