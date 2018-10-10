@@ -26,6 +26,7 @@
 		57014F0D2160BEDC0083395A /* Combine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57014F082160BEDC0083395A /* Combine.storyboard */; };
 		57014F0E2160BEDC0083395A /* EZRCombineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57014F092160BEDC0083395A /* EZRCombineViewController.m */; };
 		57014F0F2160C6D10083395A /* EZRMergeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57014F052160BEDC0083395A /* EZRMergeViewController.m */; };
+		57DA78F9216DEE3A00E1899A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		5A341A1FB3668AF88FC7EDFB /* Pods_EasyReact_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D172FCD4CCC447B2169939 /* Pods_EasyReact_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -60,7 +61,6 @@
 		CEB23C3F1F6B7DBE009C29FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB23C3E1F6B7DBE009C29FB /* AppDelegate.m */; };
 		CEB23C421F6B7DBE009C29FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB23C411F6B7DBE009C29FB /* ViewController.m */; };
 		CEB23C451F6B7DBE009C29FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB23C431F6B7DBE009C29FB /* Main.storyboard */; };
-		CEB23C471F6B7DBE009C29FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB23C461F6B7DBE009C29FB /* Assets.xcassets */; };
 		CEB23C4A1F6B7DBE009C29FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB23C481F6B7DBE009C29FB /* LaunchScreen.storyboard */; };
 		CEB23C4D1F6B7DBE009C29FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB23C4C1F6B7DBE009C29FB /* main.m */; };
 		CEB23C531F6B7DDF009C29FB /* Benchmark.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB23C521F6B7DDF009C29FB /* Benchmark.m */; };
@@ -171,7 +171,6 @@
 		CEB23C401F6B7DBE009C29FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CEB23C411F6B7DBE009C29FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CEB23C441F6B7DBE009C29FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CEB23C461F6B7DBE009C29FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB23C491F6B7DBE009C29FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB23C4B1F6B7DBE009C29FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB23C4C1F6B7DBE009C29FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -477,7 +476,6 @@
 				CEB23C4C1F6B7DBE009C29FB /* main.m */,
 				CE796ABE1F7108D400EB463E /* Benchmark-Bridging-Header.h */,
 				CEB23C431F6B7DBE009C29FB /* Main.storyboard */,
-				CEB23C461F6B7DBE009C29FB /* Assets.xcassets */,
 				CEB23C481F6B7DBE009C29FB /* LaunchScreen.storyboard */,
 				CEB23C3D1F6B7DBE009C29FB /* AppDelegate.h */,
 				CEB23C3E1F6B7DBE009C29FB /* AppDelegate.m */,
@@ -660,8 +658,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DA78F9216DEE3A00E1899A /* Images.xcassets in Resources */,
 				CEB23C4A1F6B7DBE009C29FB /* LaunchScreen.storyboard in Resources */,
-				CEB23C471F6B7DBE009C29FB /* Assets.xcassets in Resources */,
 				CEB23C451F6B7DBE009C29FB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

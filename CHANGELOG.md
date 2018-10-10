@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 2.3.0 - 2018-10-10
+
 ### Added
 
 - EZRPerformSelectorListen edge. [ISSUE 28](https://github.com/meituan/EasyReact/issues/28)
