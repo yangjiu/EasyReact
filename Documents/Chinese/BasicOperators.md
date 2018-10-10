@@ -183,12 +183,13 @@ NSObject *listener = [NSObject new];
 [[node listenedBy:listener] withBlock:^(NSNumber *next) {
   NSLog(@"下一个值是 %@", next);
 }];
-
 node.value = @2;
 [node clean];
 node.value = @3;
-listener = nil;
-node.value = @4;
+
+dispatch_async(dispatch_get_main_queue(), ^{
+    node.value = @4;
+});
 ```
 
 它的结果如下：

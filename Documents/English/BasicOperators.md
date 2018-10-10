@@ -181,14 +181,15 @@ The simplest way to listen is like this:
 EZRMutableNode<NSNumber *> *node = [EZRMutableNode value:@1];
 NSObject *listener = [NSObject new];
 [[node listenedBy:listener] withBlock:^(NSNumber *next) {
-   NSLog(@"The next value is %@", next);
+  NSLog(@"The next value is %@", next);
 }];
-
-Node.value = @2;
+node.value = @2;
 [node clean];
-Node.value = @3;
-Listener = nil;
-Node.value = @4;
+node.value = @3;
+
+dispatch_async(dispatch_get_main_queue(), ^{
+    node.value = @4;
+});
 ```
 
 The result is as follows:
