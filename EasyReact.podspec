@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'EasyReact'
-  s.version          = '2.3.0'
+  s.version          = '2.3.1'
   s.summary          = 'Make reactive programming easier for you.'
 
   s.description      = <<-DESC
