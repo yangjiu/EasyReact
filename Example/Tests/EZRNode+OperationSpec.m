@@ -487,10 +487,7 @@ describe(@"EZRNode", ^{
             expect(value2.hasUpstreamNode).to(beTrue());
             expect(value1.hasDownstreamNode).to(beTrue());
             expect(value2.hasDownstreamNode).to(beTrue());
-            expect(value2.value).to(equal(@1));
-            
-            value2.value = @4;
-            expect(value1.value).to(equal(@4));
+            expect(value1.value).to(equal(@2));
             
             value1.value = @3;
             expect(value2.value).to(equal(@3));
@@ -504,11 +501,8 @@ describe(@"EZRNode", ^{
             EZRMutableNode *value2 = [EZRMutableNode value:@2];
             
             id<EZRCancelable> cancelable = [value1 syncWith:value2];
-            expect(value2.value).to(equal(@1));
+            expect(value1.value).to(equal(@2));
 
-            value2.value = @4;
-            expect(value1.value).to(equal(@4));
-            
             [cancelable cancel];
             
             value1.value = @3;
@@ -522,10 +516,10 @@ describe(@"EZRNode", ^{
             EZRMutableNode<NSNumber *> *value1 = EZRMutableNode.new;
             EZRMutableNode<NSString *> *value2 = EZRMutableNode.new;
             
-            [value1 syncWith:value2 transform:^NSString* _Nonnull(NSNumber * _Nonnull source) {
-                return @(source.integerValue * 2).stringValue;
-            } revert:^NSNumber * _Nonnull(NSString*  _Nonnull target) {
+            [value1 syncWith:value2 transform:^NSNumber * _Nonnull(NSString*  _Nonnull target) {
                 return @(target.integerValue / 2);
+            } revert:^NSString* _Nonnull(NSNumber * _Nonnull source) {
+                return @(source.integerValue * 2).stringValue;
             }];
             
             value2.value = @"30";
