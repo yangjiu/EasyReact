@@ -23,7 +23,7 @@ PODS:
 
 DEPENDENCIES:
   - EasyReact (from `../`)
-  - Nimble
+  - Nimble (from `https://github.com/WilliamZang/Nimble.git`)
   - OCMock
   - OCMockito
   - Quick
@@ -35,7 +35,6 @@ SPEC REPOS:
     - EasyFoundation
     - EasySequence
     - EasyTuple
-    - Nimble
     - OCHamcrest
     - OCMock
     - OCMockito
@@ -46,13 +45,20 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   EasyReact:
     :path: "../"
+  Nimble:
+    :git: https://github.com/WilliamZang/Nimble.git
+
+CHECKOUT OPTIONS:
+  Nimble:
+    :commit: 3f25b677eaadd009987386a368de173d9c0cad93
+    :git: https://github.com/WilliamZang/Nimble.git
 
 SPEC CHECKSUMS:
   EasyFoundation: a4bb86dd4ba01cb720f5320c314c5628ee237acd
   EasyReact: 0220014fe7660dce181ad2ee8b589a0fbed46726
   EasySequence: 78462a0b839cb6b8a18e30a5adc37055bac0b929
   EasyTuple: a6a068ab3aa47e899a0c9f9ee23ddb394542ea9e
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
+  Nimble: 6e4123b6d882a0f8c7f950236a3251d678cf12a2
   OCHamcrest: 3506736397451c35d8763ff0a9b13492e544115f
   OCMock: ebe9ee1dca7fbed0ff9193ac0b3e2d8862ea56f6
   OCMockito: eccb29c256cbdd6c7bc206718cbb06ef737daa8b
@@ -60,6 +66,6 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
 
-PODFILE CHECKSUM: 5c9bd19a689537463f1d1a4dddd8e362df15e18a
+PODFILE CHECKSUM: 46c1321a01354204252427f40d510e86657ac82f
 
 COCOAPODS: 1.5.3

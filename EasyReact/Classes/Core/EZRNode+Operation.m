@@ -170,8 +170,8 @@ NSString * const EZRExceptionReason_CasedNodeMustGenerateBySwitchOrSwitchMapOper
     EZRMapTransform *mapTransform = [[EZRMapTransform alloc] initWithMapBlock:transform];
     EZRMapTransform *mapRevert = [[EZRMapTransform alloc] initWithMapBlock:revert];
     
-    id<EZRCancelable> transformCancelable = [otherNode linkTo:self transform:mapTransform];
-    id<EZRCancelable> revertCancelable = [self linkTo:otherNode transform:mapRevert];
+    id<EZRCancelable> transformCancelable = [self linkTo:otherNode transform:mapTransform];
+    id<EZRCancelable> revertCancelable = [otherNode linkTo:self transform:mapRevert];
     return [[EZRBlockCancelable alloc] initWithBlock:^{
         [transformCancelable cancel];
         [revertCancelable cancel];

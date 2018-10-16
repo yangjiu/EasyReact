@@ -68,7 +68,7 @@ static void swizzleDeallocIfNeeded(Class classToSwizzle);
     NSParameterAssert(keyPath);
     
     EZRMutableNode *keyPathNode = self[keyPath];
-    [_cancelBag addCancelable:[node syncWith:keyPathNode]];
+    [_cancelBag addCancelable:[keyPathNode syncWith:node]];
 }
 
 - (EZRMutableNode *)nodeWithKeyPath:(NSString *)keyPath {
