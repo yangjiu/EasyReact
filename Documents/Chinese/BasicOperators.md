@@ -1008,10 +1008,10 @@ nodeB.value;                                                // <- @2
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode new];
 EZRMutableNode<NSNumber *> *nodeB = [EZRMutableNode new];
-id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^id _Nonnull(NSNumber * _Nonnull source) {
-  return @(source.integerValue / 2);                        // nodeB 每次变的时候 nodeA 怎么变
-} revert:^NSNumber * _Nonnull(NSNumber *  _Nonnull target) {
-  return @(target.integerValue * 2);                        // nodeA 每次变的时候 nodeB 怎么变
+id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^NSNumber * _Nonnull(NSNumber * _Nonnull target) {
+  return @(target.integerValue / 2);                        // nodeB 每次变的时候 nodeA 怎么变
+} revert:^NSNumber * _Nonnull(NSNumber * _Nonnull source) {
+  return @(source.integerValue * 2);                        // nodeA 每次变的时候 nodeB 怎么变
 }];
 nodeA.value = @1;
 nodeB.value;                                                // <- @2
