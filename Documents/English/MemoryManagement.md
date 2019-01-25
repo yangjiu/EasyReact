@@ -163,17 +163,17 @@ Normally we will synchronize two nodes instead of more nodes. We provide `- (id<
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode new];
 EZRMutableNode<NSString *> *nodeB = [EZRMutableNode new];
-id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^id _Nonnull(NSNumber * _Nonnull source) {
+id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^NSNumber * _Nonnull(NSString * _Nonnull target) {
+    return @(target.integerValue);
+} revert:^NSString * _Nonnull(NSNumber * _Nonnull source) {
     return source.stringValue;
-} revert:^NSNumber * _Nonnull(id  _Nonnull target) {
-    return @([target integerValue]);
 }];
 NSObject *obj = [NSObject new];
 [[obj listen:nodeA] withBlock:^(id  _Nullable next) {
     NSLog(@"nodeA value = %@", next);
 }];
 [[obj listen:nodeB] withBlock:^(id  _Nullable next) {
-     NSLog(@"nodeB value = %@", next);
+    NSLog(@"nodeB value = %@", next);
 }];
 nodeA.value = @1;
 nodeB.value = @"11";

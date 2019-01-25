@@ -1008,10 +1008,10 @@ In addition to the complete synchronization of the two nodes, we can also add a 
 ```objective-c
 EZRMutableNode<NSNumber *> *nodeA = [EZRMutableNode new];
 EZRMutableNode<NSNumber *> *nodeB = [EZRMutableNode new];
-id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^id _Nonnull(NSNumber * _Nonnull source) {
-  return @(source.integerValue / 2);                        // How nodeA changes every time when nodeB changes
-} revert:^NSNumber * _Nonnull(NSNumber *  _Nonnull target) {
-  return @(target.integerValue * 2);                        // How nodeB changes every time when nodeA changes
+id<EZRCancelable> cancelable = [nodeA syncWith:nodeB transform:^NSNumber * _Nonnull(NSNumber * _Nonnull target) {
+  return @(target.integerValue / 2);                        // How nodeA changes every time when nodeB changes
+} revert:^NSNumber * _Nonnull(NSNumber * _Nonnull source) {
+  return @(source.integerValue * 2);                        // How nodeB changes every time when nodeA changes
 }];
 nodeA.value = @1;
 nodeB.value;                                                // <- @2
