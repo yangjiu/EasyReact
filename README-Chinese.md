@@ -164,6 +164,7 @@ EasyReact 使用 [Apache Public License 2.0 许可证](./LICENSE)。
 - [EasyReact的简单试用及和RAC的对比](https://juejin.im/post/5b7bb2f651882542b60ea570)
 - [「 iOS知识小集 」2018 · 第 25 期——简单聊聊美团 EasyReact](https://mp.weixin.qq.com/s/AtwyT_eR3DWtBtBpm63uig)
 - [美团 EasyReact 源码剖析：图论与响应式编程](https://www.jianshu.com/p/78200101ef13)
+- [EasyReact 设计思维](https://www.jianshu.com/p/9bfee0a8d14a)
 
 ## 其他
 
